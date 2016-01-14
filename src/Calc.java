@@ -1,9 +1,5 @@
 
-class A {
-	/*
-	 * static String sign; static int n=2; static Fraction numbers[]=new
-	 * Fraction[n];
-	 */
+class Calc {
 
 	private static String parse(String s) {
 		String str = s.trim();
@@ -30,58 +26,42 @@ class A {
 	}
 
 	static Fraction calculate(String s) {
-		String[] arr;
+		String[] expression_str_line;
 		String a[] = s.split(" ");
-		arr=new String[a.length];
-		Fraction[] arr2=new Fraction[a.length]; //make it smaller?
+		expression_str_line=new String[a.length];
+		Fraction[] frac_number=new Fraction[a.length]; //make it smaller?
 		for(int i=0;i<a.length;i++)
-			arr[i]=a[i];
+			expression_str_line[i]=a[i];
 		
 		int j=0;
 		for(int i=0;i<a.length;i++) { //a.length -> may be potential mistake!
-			//if((arr[i]!="+")&&(arr[i]!="-")&&(arr[i]!="*")&&(arr[i]!="%")){ //also make processing of /
-			if( !arr[i].equals("+") && !arr[i].equals("-") && !arr[i].equals("*") && !arr[i].equals("%") ){ //also make processing of /
-				arr2[j]= new Fraction(arr[i]);
+			//also make processing of /
+			if( !expression_str_line[i].equals("+") && !expression_str_line[i].equals("-") && !expression_str_line[i].equals("*") && !expression_str_line[i].equals("%") ){ //also make processing of /
+				frac_number[j]= new Fraction(expression_str_line[i]);
 				j++;
 				
 			}
 		}
 		
 		Fraction cache = new Fraction (0); //it saves result of last operation
-		//Fraction f = new Fraction (0);
 		int index_of_first_sign=0;
-
-		/*
-		System.out.println("Internal test: ");
-		arr2[0].print();
-		arr2[1].print();
-		arr2[2].print();
-		*/
 		
 		//for first 2 elements:
 		for(int i=0;i<a.length;i++) {
-			if (arr[i].equals("+")) {
-				//f=Fraction.sum(new Fraction(arr2[i-1]),new Fraction(arr2[i+1]));
-				cache=Fraction.sum(arr2[0], arr2[1]);
+			if (expression_str_line[i].equals("+")) {
+				//f=Fraction.sum(new Fraction(frac_number[i-1]),new Fraction(frac_number[i+1]));
+				cache=Fraction.sum(frac_number[0], frac_number[1]);
 				index_of_first_sign=i;
 				break;
 			}
 		}
 		
-		/*
-		System.out.println("!!! ->" + index_of_first_sign);
-		cache.print();
-		for(int i=0;i<a.length;i++) {
-			System.out.println(i + ": " + arr[i]);
-		}
-		*/
-		
 		//TODO here make checking if string is long
 		//for next elements:
 		j=2;
 		for(int i=index_of_first_sign+1;i<a.length;i++) {
-			if (arr[i].equals("+")) {
-				cache=Fraction.sum(cache, arr2[j]);
+			if (expression_str_line[i].equals("+")) {
+				cache=Fraction.sum(cache, frac_number[j]);
 				j++;
 			}
 		}	

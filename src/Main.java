@@ -4,27 +4,25 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//Tests
+		//Tests TODO delete
 		Fraction f1 = new Fraction(8);
 		
 		System.out.println("Test1:");
-		Fraction f2 = A.calculate("3 + 5");
+		Fraction f2 = Calc.calculate("3 + 5");
 		f2.print();
 		
 		
 		System.out.println("Test2:");
-		Fraction f3 = A.calculate("3 + 5 + 1");
+		Fraction f3 = Calc.calculate("3 + 5 + 1");
 		f3.print();
 		
 		System.out.println("Test3:");
-		Fraction f4 = A.calculate("3 + 5 + 1 + 1 + 100");
+		Fraction f4 = Calc.calculate("3 + 5 + 1 + 1 + 100");
 		f4.print();
 		
 		System.out.println("Test4:");
-		Fraction f5 = A.calculate("3 + 5 + 1 + 1+100+7"); //TODO MISTAKE!
+		Fraction f5 = Calc.calculate("3 + 5 + 1 + 1+100+7"); //TODO MISTAKE!
 		f4.print();
-		
-		
 		System.out.println("//----------------------------------------------------");
 		
 		
@@ -37,28 +35,21 @@ public class Main {
 
 		Scanner in = new Scanner(System.in);
 		System.out.println("\nInstructions:");
-		System.out.println("Syntax: 5 + 3 (with spaces!)");
+		System.out.println("Syntax: <5 + 3>, <100 + 10> (with spaces!)");
 		System.out.println("Supported operations: +");
 		System.out.println("Enter <exit> to end program.\n");
 		
-		//int menu = in.nextInt();
-
 		String str;
 		for (;;) // implement checking of string?
 		{
-			//System.out.print(">");
-			//String str = new String((String) in.next());
-			//str = in.next();
 			System.out.print(">");
-			str = in.nextLine();
-			
-			//str="5 + 3";
-			
+			str = in.nextLine(); //for all line (with spaces)
+						
 			if (str.equals("exit"))
 					break;
 			else {				
 				System.out.print("=");
-				result = A.calculate(str);
+				result = Calc.calculate(str);
 				result.print();
 			}
 		}
