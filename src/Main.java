@@ -21,8 +21,24 @@ public class Main {
 		f4.print();
 		
 		System.out.println("Test4:");
-		Fraction f5 = Calc.calculate("3 + 5 + 1 + 1+100+7"); //TODO MISTAKE!
+		Fraction f5 = Calc.calculate("3 + 5 + 1 + 1+100+7"); //TODO MISTAKE! Fix it!
 		f4.print();
+		
+		System.out.println("Test5:");
+		Fraction f6 = Calc.calculate("3 + 50 + 1 + 1 + 100 + 1/2");
+		f6.print(); //output: 311/2 //TODO rewrite class Fraction (badly output). Fix it!
+		
+		System.out.println("Test6:");
+		Fraction f7 = Calc.calculate("1/2 + 1/2");
+		f7.print(); //TODO Error! In class Calc because see next strings (commented). Fix it!
+		/*
+		//checking
+		Fraction f8 = new Fraction(1,2);
+		Fraction f9 = new Fraction(1,2);
+		f8.addition(f9);
+		f8.print();
+		*/
+		
 		System.out.println("//----------------------------------------------------");
 		
 		
@@ -35,7 +51,7 @@ public class Main {
 
 		Scanner in = new Scanner(System.in);
 		System.out.println("\nInstructions:");
-		System.out.println("Syntax: <5 + 3>, <100 + 10> (with spaces!)");
+		System.out.println("Syntax: <5 + 3>, <100 + 10>, <1/2 + 1/2>, <1 + 1/2> (with spaces!)");
 		System.out.println("Supported operations: +");
 		System.out.println("Enter <exit> to end program.\n");
 		

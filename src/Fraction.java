@@ -7,13 +7,11 @@ public class Fraction { // rename -> FractionOperations???
 	}
 
 	Fraction() {
-		this(0, 1); // read more anout this!!! -> if this(0) -> it calles next
-					// Fraction and "next Fraction" calles first Fraction
+		this(0, 1);
 	}
 
 	Fraction(int nom) {
 		this(nom, 1);
-
 	}
 
 	Fraction(String s) {
@@ -78,16 +76,12 @@ public class Fraction { // rename -> FractionOperations???
 		nom *= tmp; // проверить (я решил сделать без проверки!!!)
 	}
 
-	// сделать конструктор для инициализации по умолчанию
 	void sign() { // проверка на знак + выводим знак только (при вводе
 					// интегрировать проверку!!!)
 		if (nom < 0 && denom < 0 || nom > 0 && denom < 0) {
 			nom *= -1;
 			denom *= -1;
 		}
-		/*
-		 * if (nom > 0 && denom < 0) { nom*=-1; denom*=-1; }
-		 */
 	}
 
 	void fractionStandartization() {
@@ -95,8 +89,7 @@ public class Fraction { // rename -> FractionOperations???
 		reduction();
 	}
 
-	// CДЕЛАТЬ ЧЕРЕЗ RETURN!!! //проверить на отрицательные числа! (куда
-	// проверку интегрировать?
+	// CДЕЛАТЬ ЧЕРЕЗ RETURN!!! //проверить на отрицательные числа!
 	void addition(Fraction f2) { // сложение двух дробей
 		if (denom != f2.denom) {
 			nom = nom * f2.denom + denom * f2.nom;
@@ -107,7 +100,6 @@ public class Fraction { // rename -> FractionOperations???
 		fractionStandartization();
 	}
 
-	// static method??? //MISTAKE!!!
 	Fraction addition(Fraction f1, Fraction f2) { // сложение двух дробей
 		if (f1.denom != f2.denom) {
 			this.nom = f1.nom * f2.denom + f1.denom * f2.nom;
@@ -180,25 +172,7 @@ public class Fraction { // rename -> FractionOperations???
 		return f3;
 	}
 
-	/*
-	 * void subtraction(Fraction f2) { //subtraction!!! if (denom!=f2.denom) {
-	 * nom=nom * f2.denom + denom * f2.nom; denom=denom * f2.denom; } else {
-	 * //Не безопасно??? nom=nom + f2.nom; } reduction(); }
-	 */
-
-	/*
-	 * Fraction addition(Fraction f1, Fraction f2) { //сложение двух дробей
-	 * nom=nom * f2.denom + denom * f2.nom; denom=denom * f2.denom;
-	 * 
-	 * reduction(); return f1; }
-	 */
-	/*
-	 * //CДЕЛАТЬ ЧЕРЕЗ RETURN!!! //проверить на отрицательные числа! (куда
-	 * проверку интегрировать? void multiplication(Fraction f2) { //умножение
-	 * двух дробей if (denom!=f2.denom) { nom=nom * f2.nom; denom=denom *
-	 * f2.denom; } reduction(); }
-	 */
-
+	
 	boolean compare(Fraction f1, Fraction f2, boolean comparing_var) {
 		f1.reduction();
 		f2.reduction();
@@ -217,4 +191,3 @@ public class Fraction { // rename -> FractionOperations???
 		return nom == f.getNom() && denom == f.getDenom();
 	}
 }
-
