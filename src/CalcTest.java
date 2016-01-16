@@ -95,10 +95,68 @@ public class CalcTest {
 		*/
 	}
 	
+	@Test //TODO SAME BUG!!!
+	public void test7_2() {
+		Fraction f1 = new Fraction(6, 4);
+		Fraction f2 = Calc.calculate("3/4 + 3/4");
+		assertTrue(f1.equals(f2));
+	}
+	
+	@Test //TODO SAME BUG!!!
+	public void test7_3() {
+		Fraction f1 = new Fraction(1);
+		Fraction f2 = Calc.calculate("3/4 + 1/4");
+		assertTrue(f1.equals(f2));
+	}
+	
+	@Test //TODO BUG!!!
+	public void test7_4() {
+		Fraction f1 = new Fraction(7, 5);
+		Fraction f2 = Calc.calculate("5/10 + 7/10 + 2/10");
+		assertTrue(f1.equals(f2));
+	}
+	
+	@Test
+	public void test7_5() {
+		Fraction f1 = new Fraction(6, 5);
+		Fraction f2 = Calc.calculate("5/10 + 7/10");
+		assertTrue(f1.equals(f2));
+	}
+	
+	@Test //TODO BUG!!!
+	public void test7_6() {
+		Fraction f1 = new Fraction(6, 5);
+		Fraction f2 = Calc.calculate("5/10 + 7/10 + 2/10 - 2/10");
+		assertTrue(f1.equals(f2));
+	}
+	
 	@Test
 	public void test8() {
 		Fraction f1 = new Fraction(5, 4);
 		Fraction f2 = Calc.calculate("1/2 + 3/4");
+		assertTrue(f1.equals(f2));
+	}
+	
+	@Test //TODO BUG!!! (partly)
+	public void test9() {
+		Fraction f1 = new Fraction(0);
+		Fraction f2 = Calc.calculate("-1 + 1");
+		assertTrue(f1.equals(f2));
+	}
+	
+	//next milestone:
+	
+	@Test //TODO BUG!!!
+	public void test10() {
+		Fraction f1 = new Fraction(10);
+		Fraction f2 = Calc.calculate("5* 2");
+		assertTrue(f1.equals(f2));
+	}
+	
+	@Test //TODO BUG!!!
+	public void test11() {
+		Fraction f1 = new Fraction(12);
+		Fraction f2 = Calc.calculate("2 + 5* 2");
 		assertTrue(f1.equals(f2));
 	}
 	
