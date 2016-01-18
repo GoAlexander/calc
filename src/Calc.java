@@ -13,6 +13,13 @@ class Calc {
 			str = str.replace("%-", "%(-");
 			str = str.replace("(-", "(0-");
 		}
+		if (str.contains("(")) {
+			
+			str = str.replace("(", " ( ");
+		}
+		if (str.contains(")")) {
+			str = str.replace(")", " ) ");
+		}
 		if (str.contains("+")) {
 			str = str.replace("+", " + ");
 		}
@@ -33,7 +40,6 @@ class Calc {
 		String str = parse(s);
 		if (str.startsWith(" +") || str.startsWith(" -") || str.startsWith(" *") || str.startsWith(" %"))
 			throw new Exception();
-		System.out.println(str);
 		String expression_str_line[] = str.split(" ");
 		Fraction[] frac_number = new Fraction[expression_str_line.length]; // make
 																			// it

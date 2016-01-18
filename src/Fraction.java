@@ -14,20 +14,16 @@ public class Fraction { // rename -> FractionOperations???
 		this(nom, 1);
 	}
 
-	Fraction(String s) {
-		try {
-			if (s.contains("/")) {
-				String[] parts = s.split("/");
-				int part1 = Integer.parseInt(parts[0]);
-				int part2 = Integer.parseInt(parts[1]);
-				for (int i = 2; i < parts.length; i++)
-					part2 *= Integer.parseInt(parts[i]);
-				setFraction(part1, part2);
-			} else
-				setFraction(Integer.parseInt(s));
-		} catch (NumberFormatException e) {
-			System.out.println("Wrong format!");
-		}
+	Fraction(String s) throws NumberFormatException {
+		if (s.contains("/")) {
+			String[] parts = s.split("/");
+			int part1 = Integer.parseInt(parts[0]);
+			int part2 = Integer.parseInt(parts[1]);
+			for (int i = 2; i < parts.length; i++)
+				part2 *= Integer.parseInt(parts[i]);
+			setFraction(part1, part2);
+		} else
+			setFraction(Integer.parseInt(s));
 	}
 
 	void setFraction(int nom, int denom) {
@@ -59,8 +55,9 @@ public class Fraction { // rename -> FractionOperations???
 			System.out.println(nom + "/" + denom);
 	}
 
-	private void reduction() { // сокращение дроби (Но! если число на вход
-						// отрицательное, то знак "вынуть")
+	private void reduction() { // сокращение дроби (Но!
+								// если число на вход
+		// отрицательное, то знак "вынуть")
 		int tmp = 1;
 		if (nom < 0) {
 			tmp = -1;
@@ -72,11 +69,13 @@ public class Fraction { // rename -> FractionOperations???
 				denom /= i;
 			}
 		}
-		nom *= tmp; // проверить (я решил сделать без проверки!!!)
+		nom *= tmp; // проверить (я решил сделать без
+					// проверки!!!)
 	}
 
-	private void sign() { // проверка на знак + выводим знак только (при вводе
-					// интегрировать проверку!!!)
+	private void sign() { // проверка на знак + выводим
+							// знак только (при вводе
+		// интегрировать проверку!!!)
 		if (nom < 0 && denom < 0 || nom > 0 && denom < 0) {
 			nom *= -1;
 			denom *= -1;
@@ -105,7 +104,6 @@ public class Fraction { // rename -> FractionOperations???
 		f3.fractionStandartization();
 		return f3;
 	}
-
 
 	void subtract(Fraction f1, Fraction f2) {
 		nom = f1.nom * f2.denom - f2.nom * f1.denom;
@@ -161,7 +159,6 @@ public class Fraction { // rename -> FractionOperations???
 		return f3;
 	}
 
-	
 	boolean compare(Fraction f1, Fraction f2, boolean comparing_var) {
 		f1.reduction();
 		f2.reduction();
@@ -171,7 +168,7 @@ public class Fraction { // rename -> FractionOperations???
 			comparing_var = false;
 		return comparing_var;
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
 		if (!(o instanceof Fraction))
