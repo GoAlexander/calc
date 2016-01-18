@@ -3,6 +3,9 @@ class Calc {
 
 	private static String parse(String s) {
 		String str = s.replace(" ", "");
+		/*if (str.contains("+-")) {
+			str = str.replace("+-", "+0-");
+		}*/
 		if (str.contains("+")) {
 			str = str.replace("+", " + ");
 		}
@@ -19,14 +22,23 @@ class Calc {
 		return str;
 	}
 
-	static Fraction calculate(String s) throws Exception {
+	/*TODO   private void check(String s[]) {
+		String tmp[]=
+		
+		for (int i = 1; i < s.length; i++) {
+			if(s[i].equals("-")&& ((s[i-1].equals("")) || (s[i-1].equals("("))) ) {
+				
+			}
+				
+		}
+	}*/
+	
+	public static Fraction calculate(String s) throws Exception {
 		String str = parse(s);
 		String expression_str_line[] = str.split(" ");
 		Fraction[] frac_number = new Fraction[expression_str_line.length]; // make
 																			// it
 		
-		if ((expression_str_line.length == 1))
-			throw new Exception();// smaller?
 		int j = 0;
 		for (int i = 0; i < expression_str_line.length; i++) {
 			// also make processing of /
@@ -38,6 +50,9 @@ class Calc {
 			}
 		}
 
+		if ((expression_str_line.length == 1)&&(frac_number[0]!=null))
+			return frac_number[0];
+		
 		Fraction cache = new Fraction(0); // it saves the result of last operation
 		int index_of_first_sign = 0;
 

@@ -27,7 +27,6 @@ public class Fraction { // rename -> FractionOperations???
 				setFraction(Integer.parseInt(s));
 		} catch (NumberFormatException e) {
 			System.out.println("Wrong format!");
-			setFraction(0);
 		}
 	}
 
