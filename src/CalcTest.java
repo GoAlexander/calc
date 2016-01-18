@@ -266,13 +266,24 @@ public class CalcTest {
 	}
 
 	@Test
-	public void test14() {
+	public void test14_1() {
 		try {
 			@SuppressWarnings("unused")
 			Fraction f2 = Calc.calculate("+ - 1");
 			fail();
 		} catch (Exception e) {
 			assertTrue(true);
+		}
+	}
+	
+	@Test
+	public void test14_2() {
+		try {
+			Fraction f1 = new Fraction(0);
+			Fraction f2 = Calc.calculate("1+ - 1");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
 		}
 	}
 
