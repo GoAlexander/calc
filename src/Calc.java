@@ -19,12 +19,14 @@ class Calc {
 		return str;
 	}
 
-	static Fraction calculate(String s) {
+	static Fraction calculate(String s) throws Exception {
 		String str = parse(s);
 		String expression_str_line[] = str.split(" ");
 		Fraction[] frac_number = new Fraction[expression_str_line.length]; // make
 																			// it
-																			// smaller?
+		
+		if ((expression_str_line.length == 1))
+			throw new Exception();// smaller?
 		int j = 0;
 		for (int i = 0; i < expression_str_line.length; i++) {
 			// also make processing of /

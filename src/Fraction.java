@@ -1,6 +1,6 @@
 
 public class Fraction { // rename -> FractionOperations???
-	int nom, denom;
+	private int nom, denom;
 
 	Fraction(int nom, int denom) {
 		setFraction(nom, denom);
@@ -60,7 +60,7 @@ public class Fraction { // rename -> FractionOperations???
 			System.out.println(nom + "/" + denom);
 	}
 
-	void reduction() { // сокращение дроби (Но! если число на вход
+	private void reduction() { // сокращение дроби (Но! если число на вход
 						// отрицательное, то знак "вынуть")
 		int tmp = 1;
 		if (nom < 0) {
@@ -76,7 +76,7 @@ public class Fraction { // rename -> FractionOperations???
 		nom *= tmp; // проверить (я решил сделать без проверки!!!)
 	}
 
-	void sign() { // проверка на знак + выводим знак только (при вводе
+	private void sign() { // проверка на знак + выводим знак только (при вводе
 					// интегрировать проверку!!!)
 		if (nom < 0 && denom < 0 || nom > 0 && denom < 0) {
 			nom *= -1;
@@ -84,31 +84,20 @@ public class Fraction { // rename -> FractionOperations???
 		}
 	}
 
-	void fractionStandartization() {
+	private void fractionStandartization() {
 		sign();
 		reduction();
 	}
 
-	// CДЕЛАТЬ ЧЕРЕЗ RETURN!!! //проверить на отрицательные числа!
-	void addition(Fraction f2) { // сложение двух дробей
-		if (denom != f2.denom) {
-			nom = nom * f2.denom + denom * f2.nom;
-			denom = denom * f2.denom;
-		} else { // Не безопасно???
-			nom = nom + f2.nom;
-		}
+	void addition(Fraction f2) {
+		addition(this, f2);
 		fractionStandartization();
 	}
 
-	Fraction addition(Fraction f1, Fraction f2) { // сложение двух дробей
-		if (f1.denom != f2.denom) {
-			this.nom = f1.nom * f2.denom + f1.denom * f2.nom;
-			this.denom = f1.denom * f2.denom;
-		} else { // Не безопасно???
-			this.nom = f1.nom + f2.nom;
-		}
-		// reduction();
-		return this;
+	void addition(Fraction f1, Fraction f2) {
+		nom = f1.nom * f2.denom + f1.denom * f2.nom;
+		denom = f1.denom * f2.denom;
+		fractionStandartization();
 	}
 
 	public static Fraction sum(Fraction f1, Fraction f2) {
@@ -117,6 +106,7 @@ public class Fraction { // rename -> FractionOperations???
 		f3.fractionStandartization();
 		return f3;
 	}
+
 
 	void subtract(Fraction f1, Fraction f2) {
 		nom = f1.nom * f2.denom - f2.nom * f1.denom;
