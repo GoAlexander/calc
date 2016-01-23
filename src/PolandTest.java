@@ -10,7 +10,8 @@ public class PolandTest {
 	public void setUp() {
 		Fraction f1 = new Fraction(0);
 	}*/
-
+	
+	/*
 	@Test
 	public void test1() {
 		Fraction f1 = new Fraction(8);
@@ -131,15 +132,16 @@ public class PolandTest {
 			fail();
 		}
 		
-		/*
+		
 		//checking
-		Fraction f8 = new Fraction(1,2);
-		Fraction f9 = new Fraction(1,2);
-		f8.addition(f9);
-		f8.print();
-		*/
+		//Fraction f8 = new Fraction(1,2);
+		//Fraction f9 = new Fraction(1,2);
+		//f8.addition(f9);
+		//f8.print();
+		
 	}
 	
+
 	@Test //TODO SAME BUG!!!
 	public void test7_2() {
 		Fraction f1 = new Fraction(6, 4);
@@ -308,5 +310,6 @@ public class PolandTest {
 			assertTrue(true);
 		}
 	}
+	*/
 	
 }
