@@ -14,7 +14,7 @@ class Calc {
 			str = str.replace("(-", "(0-");
 		}
 		if (str.contains("(")) {
-			
+
 			str = str.replace("(", " ( ");
 		}
 		if (str.contains(")")) {

@@ -1,5 +1,5 @@
 
-public class Fraction { // rename -> FractionOperations???
+public class Fraction {
 	private int nom, denom;
 
 	Fraction(int nom, int denom) {

@@ -309,4 +309,26 @@ public class CalcTest {
 		}
 	}
 	
+	@Ignore @Test
+	public void test17() {
+		Fraction f1 = new Fraction(4,5);
+		try {
+			Fraction f2 = Poland.Calculate("2/ (5/2)");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
+	@Ignore @Test
+	public void test18() {
+		Fraction f1 = new Fraction(9,2);
+		try {
+			Fraction f2 = Poland.Calculate("2/1 + 5/(2/1)");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}	
+	
 }
