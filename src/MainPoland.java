@@ -4,9 +4,20 @@ public class MainPoland extends Main {
 
 	public static void main(String[] args) {
 		String str;
+		Fraction result;
+		
+		/*
+		 * System.out.println("┬───────────┬");
+		 * System.out.println("│Calculator.│");
+		 * System.out.println("│───────────│");
+		 */
+		
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
-		Fraction result;
+		System.out.println("Instructions:");
+		System.out.println("Syntax: <5 + 3>, <100 + 10>, <1/2 + 1/2>, <1 + 1/2>");
+		System.out.println("Supported operations: +, -, ");
+		System.out.println("Enter <exit> to end program.\n");
 
 		// TODO make this menu similar as in Main.java
 		for (;;) // implement checking of string?

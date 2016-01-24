@@ -16,8 +16,8 @@ public class Main {
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		System.out.println("Instructions:");
-		System.out.println("Syntax: <5 + 3>, <100 + 10>, <1/2 + 1/2>, <1 + 1/2> (with spaces!)");
-		System.out.println("Supported operations: +, -");
+		System.out.println("Syntax: <5 + 3>, <100 + 10>, <1/2 + 1/2>, <1 + 1/2>");
+		System.out.println("Supported operations: +, -, ");
 		System.out.println("Enter <exit> to end program.\n");
 
 		String str;

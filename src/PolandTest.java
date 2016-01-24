@@ -94,7 +94,7 @@ public class PolandTest {
 		}
 	}
 	
-	@Test //TODO BUG!!!
+	@Test
 	public void test5() {
 		Fraction f1 = new Fraction(1);
 		try {
@@ -105,7 +105,7 @@ public class PolandTest {
 		}
 	}
 	
-	@Test //TODO BUG!!! (out put has to be: 155.5) (or not bug?)
+	@Test
 	public void test6() {
 		Fraction f1 = new Fraction(311, 2);
 		try {
@@ -116,7 +116,7 @@ public class PolandTest {
 		}
 	}
 	
-	@Test //TODO BUG!!! Error! In class Calc because see next strings (commented). Fix it!
+	@Test
 	public void test7() {
 		Fraction f1 = new Fraction(1);
 		try {
@@ -124,19 +124,11 @@ public class PolandTest {
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();
-		}
-		
-		
-		//checking
-		//Fraction f8 = new Fraction(1,2);
-		//Fraction f9 = new Fraction(1,2);
-		//f8.addition(f9);
-		//f8.print();
-		
+		}		
 	}
 	
 
-	@Test //TODO SAME BUG!!!
+	@Test
 	public void test7_2() {
 		Fraction f1 = new Fraction(6, 4);
 		try {
@@ -147,7 +139,7 @@ public class PolandTest {
 		}
 	}
 	
-	@Test //TODO SAME BUG!!!
+	@Test
 	public void test7_3() {
 		Fraction f1 = new Fraction(1);
 		try {
@@ -159,7 +151,7 @@ public class PolandTest {
 		}
 	}
 	
-	@Test //TODO BUG!!!
+	@Test
 	public void test7_4() {
 		Fraction f1 = new Fraction(7, 5);
 		try {
@@ -181,7 +173,7 @@ public class PolandTest {
 		}
 	}
 	
-	@Test //TODO BUG!!!
+	@Test
 	public void test7_6() {
 		Fraction f1 = new Fraction(6, 5);
 		try {
@@ -203,7 +195,7 @@ public class PolandTest {
 		}
 	}
 	
-	@Test //TODO BUG!!! (partly)
+	@Test
 	public void test9() {
 		Fraction f1 = new Fraction(0);
 		try {
@@ -228,7 +220,7 @@ public class PolandTest {
 		}
 	}
 	
-	@Test //TODO BUG!!!
+	@Test
 	public void test11() {
 		Fraction f1 = new Fraction(12);
 		try {
