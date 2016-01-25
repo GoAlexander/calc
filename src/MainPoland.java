@@ -15,11 +15,11 @@ public class MainPoland extends Main {
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		System.out.println("Instructions:");
-		System.out.println("Syntax: <5 + 3>, <100 + 10>, <1/2 + 1/2>, <1 + 1/2>");
-		System.out.println("Supported operations: +, -, ");
+		System.out.println("Example of usage: <50+( 5 * (( 5-1) + (5+1)) + 1  ) +1/2>");
+		System.out.println("Output: 203/2");
+		System.out.println("Supported operations: +, -, *, /");
 		System.out.println("Enter <exit> to end program.\n");
 
-		// TODO make this menu similar as in Main.java
 		for (;;) // implement checking of string?
 		{
 			System.out.print(">");
@@ -30,7 +30,7 @@ public class MainPoland extends Main {
 			else {
 				System.out.print("=");
 				try {
-					result = Poland.Calculate(str);
+					result = Poland.calculate(str);
 					result.print();
 				} catch (Exception e) {
 					System.out.println("Error");

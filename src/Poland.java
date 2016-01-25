@@ -3,29 +3,29 @@ import java.util.Stack;
 public class Poland {
 	// Method Calculate takes expression as string and return result
 		// This method calls another methods of current class
-	static public Fraction Calculate(String input) {
+	static public Fraction calculate(String input) {
 		if (input.startsWith("-"))
 			input = "0" + input;
-		String output = GetExpression(input); //Transformation of expression to postfix form
-		Fraction result = Counting(output); // returned expression solving
+		String output = getExpression(input); //Transformation of expression to postfix form
+		Fraction result = counting(output); // returned expression solving
 		return result; // return result
 	}
 	
 	//This method transforms string to postfix form
-	static private String GetExpression(String input) {
+	static private String getExpression(String input) {
 		String output = ""; //String for expression
 		Stack<Character> operStack = new Stack<Character>(); //Stack for operators
 
 		for (int i = 0; i < input.length(); i++) {  //for each symbol in imputed string
 			// Avoid separators!
-			if (IsDelimeter(input.charAt(i)))
+			if (isDelimeter(input.charAt(i)))
 				continue; // Go to the next symbol
 
 			//If symbol is digit -> read all number
 			if (Character.isDigit(input.charAt(i))) // If symbol is digit
 			{
-				//Read untill separator or operator (to get a number)
-				while (!IsDelimeter(input.charAt(i)) && !IsOperator(input.charAt(i))) {
+				//Read until separator or operator (to get a number)
+				while (!isDelimeter(input.charAt(i)) && !isOperator(input.charAt(i))) {
 					output += input.charAt(i); // Add each digit to output string
 					i++; // Go to the next symbol
 					if (i == input.length())
@@ -37,7 +37,7 @@ public class Poland {
 			}
 
 			// If symbol is operator
-			if (IsOperator(input.charAt(i))) // If operator
+			if (isOperator(input.charAt(i))) // If operator
 			{
 				if (input.charAt(i) == '(') // If symbol is "("
 					operStack.push(input.charAt(i));  // Write to the stack
@@ -54,7 +54,7 @@ public class Poland {
 				else //If another operator
 				{
 					if (operStack.size() > 0) //If there are elements in stack
-						if (GetPriority(input.charAt(i)) <= GetPriority(operStack.peek())) 
+						if (getPriority(input.charAt(i)) <= getPriority(operStack.peek())) 
 							//And if priority of our operator is less or equal priority of operator in the peek of stack 
 							output += operStack.pop().toString() + " "; // Then add last operator from stack to the string-expression
 					operStack.push(input.charAt(i)); // if stack is empty or priority of operator is greater -> then add operator to the peek of stack
@@ -70,17 +70,15 @@ public class Poland {
 	}
 
 	// This method calculates value of expression (expression is already in postfix form)
-	static private Fraction Counting(String input) {
+	static private Fraction counting(String input) {
 		Fraction result = new Fraction(0);
-		// double result = 0; // Result
-		// Stack<Double> temp = new Stack<Double>();
 		Stack<Fraction> temp = new Stack<Fraction>(); //Stack for answers
 		for (int i = 0; i < input.length(); i++) { //For each symbol in the string
 			// If the symbol is digit -> read the number and write to the peek of stack
 			if (Character.isDigit(input.charAt(i))) {
 				String a = "";
 
-				while (!IsDelimeter(input.charAt(i)) && !IsOperator(input.charAt(i))) // Until it is not separator
+				while (!isDelimeter(input.charAt(i)) && !isOperator(input.charAt(i))) // Until it is not separator
 				{
 					a += input.charAt(i); // add
 					i++;
@@ -90,11 +88,9 @@ public class Poland {
 				temp.push(new Fraction(a)); // Write to the stack
 				// temp.push(Double.parseDouble(a));
 				i--;
-			} else if (IsOperator(input.charAt(i))) // If symbol if operator
+			} else if (isOperator(input.charAt(i))) // If symbol if operator
 			{
-				//Take two lastvalues from stack
-				// Double a = temp.pop();
-				// Double b = temp.pop();
+				//Take two last values from stack
 				Fraction a = temp.pop();
 				Fraction b = temp.pop();
 				switch (input.charAt(i)) // And calculate them according to the current operator
@@ -129,21 +125,21 @@ public class Poland {
 
 	// small functions:
 	// Method returns true if verifiable symbol is separator (space or =)
-	static private boolean IsDelimeter(char c) {
+	static private boolean isDelimeter(char c) {
 		if ((" =".indexOf(c) != -1))
 			return true;
 		return false;
 	}
 
 	// Method returns true if verifiable symbol is separator
-	static private boolean IsOperator(char СЃ) {
-		if (("+-/*^()".indexOf(СЃ) != -1))
+	static private boolean isOperator(char c) {
+		if (("+-/*^()".indexOf(c) != -1))
 			return true;
 		return false;
 	}
 
 	// Method returns priority of operator
-	static private byte GetPriority(char s) {
+	static private byte getPriority(char s) {
 		switch (s) {
 		case '(':
 			return 0;
