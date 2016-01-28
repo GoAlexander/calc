@@ -69,6 +69,16 @@ class Calc {
 				index_of_first_sign = i;
 				break;
 			}
+			if (expression_str_line[i].equals("*")) {
+				cache = Fraction.mult(frac_number[0], frac_number[1]);
+				index_of_first_sign = i;
+				break;
+			}
+			if (expression_str_line[i].equals("%")) {
+				cache = Fraction.div(frac_number[0], frac_number[1]);
+				index_of_first_sign = i;
+				break;
+			}
 			if (expression_str_line[i].equals("-")) {
 				cache = Fraction.dif(frac_number[0], frac_number[1]);
 				index_of_first_sign = i;
@@ -83,6 +93,14 @@ class Calc {
 		for (int i = index_of_first_sign + 1; i < expression_str_line.length; i++) {
 			if (expression_str_line[i].equals("+")) {
 				cache = Fraction.sum(cache, frac_number[j]);
+				j++;
+			}
+			if (expression_str_line[i].equals("*")) {
+				cache = Fraction.mult(cache, frac_number[j]);
+				j++;
+			}
+			if (expression_str_line[i].equals("%")) {
+				cache = Fraction.div(cache, frac_number[j]);
 				j++;
 			}
 			if (expression_str_line[i].equals("-")) {

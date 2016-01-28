@@ -5,13 +5,13 @@ public class MainPoland extends Main {
 	public static void main(String[] args) {
 		String str;
 		Fraction result;
-		
+
 		/*
 		 * System.out.println("┬───────────┬");
 		 * System.out.println("│Calculator.│");
 		 * System.out.println("│───────────│");
 		 */
-		
+
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		System.out.println("Instructions:");
