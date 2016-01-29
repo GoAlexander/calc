@@ -305,6 +305,62 @@ public class CalcTest {
 			assertTrue(true);
 		}
 	}
+
+	@Test
+	public void test17() {
+		Fraction f1 = new Fraction(203, 2);
+		try {
+			Fraction f2 = Calc.calculate("50+( 5 * (( 5-1) + (5+1)) + 1  ) +1/2");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Test
+	public void test18() {
+		Fraction f1 = new Fraction("0");
+		try {
+			Fraction f2 = Calc.calculate("(-1) + 1");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
+	@Test
+	public void test19() {
+		Fraction f1 = new Fraction(-3,2);
+		try {
+			Fraction f2 = Calc.calculate("1+(2/4-3)");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
+	@Test
+	public void test20() {
+		Fraction f1 = new Fraction(-3,2);
+		try {
+			Fraction f2 = Calc.calculate("1+(2/4-3)+(-4+5)-1");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
+	@Test
+	public void test21() {
+		Fraction f1 = new Fraction("0");
+		try {
+			Fraction f2 = Calc.calculate("-1+(-2+3)");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
 	/*
 	 * @Test public void test17() { Fraction f1 = new Fraction(4, 5); try {
 	 * Fraction f2 = Calc.calculate("2/ (5/2)"); assertTrue(f1.equals(f2)); }
@@ -313,10 +369,6 @@ public class CalcTest {
 	 * @Test public void test18() { Fraction f1 = new Fraction(9, 2); try {
 	 * Fraction f2 = Calc.calculate("2/1 + 5/(2/1)"); assertTrue(f1.equals(f2));
 	 * } catch (Exception e) { fail(); } }
-	 * 
-	 * @Test public void test19() { Fraction f1 = new Fraction(203, 2); try {
-	 * Fraction f2 = Calc.calculate("50+( 5 * (( 5-1) + (5+1)) + 1  ) +1/2");
-	 * assertTrue(f1.equals(f2)); } catch (Exception e) { fail(); } }
 	 * 
 	 * @Test public void test20() { Fraction f1 = new Fraction(1, 2); try {
 	 * Fraction f2 = Calc.calculate("  1/2  "); assertTrue(f1.equals(f2)); }
@@ -338,10 +390,6 @@ public class CalcTest {
 	 * Fraction f2 = Calc.calculate("5* (2 + 5) /2"); assertTrue(f1.equals(f2));
 	 * } catch (Exception e) { fail(); } }
 	 * 
-	 * @Test public void test25() { Fraction f1 = new Fraction("0"); try {
-	 * Fraction f2 = Calc.calculate("(-1) + 1"); assertTrue(f1.equals(f2)); }
-	 * catch (Exception e) { fail(); } }
-	 * 
 	 * @Ignore
 	 * 
 	 * @Test public void test26() { Fraction f1 = new Fraction("222222222222");
@@ -354,20 +402,12 @@ public class CalcTest {
 	 * try { Fraction f2 = Calc.calculate("111111111111 + 1");
 	 * assertTrue(f1.equals(f2)); } catch (Exception e) { fail(); } }
 	 * 
-	 * @Test public void test28() { Fraction f1 = new Fraction("10000"); try {
-	 * Fraction f2 = Calc.calculate("9999 + 1"); assertTrue(f1.equals(f2)); }
-	 * catch (Exception e) { fail(); } }
-	 * 
 	 * @Ignore
 	 * 
 	 * @Test(timeout = 2) // number in milliseconds // TODO BUG to long public
 	 * void test29() { Fraction f1 = new Fraction("1111111111"); try { Fraction
 	 * f2 = Calc.calculate("1111111111"); assertTrue(f1.equals(f2)); } catch
 	 * (Exception e) { fail(); } }
-	 * 
-	 * @Test public void test30() { Fraction f1 = new Fraction("55555"); try {
-	 * Fraction f2 = Calc.calculate("50000 + 5555"); assertTrue(f1.equals(f2));
-	 * } catch (Exception e) { fail(); } }
 	 * 
 	 * @Ignore
 	 * 
