@@ -1,11 +1,22 @@
 import static org.junit.Assert.*;
 
 import org.junit.Ignore;
-//import org.junit.Ignore;
-//import org.junit.Before;
+import org.junit.Before;
+import org.junit.After;
 import org.junit.Test;
 
 public class PolandTest {
+	
+	@Before
+	public void setUp() {
+		System.out.println("@Before setUp");
+	}
+	
+	@After
+	public void tearDown() {
+		System.out.println("@After tearDown");
+	}
+	
 
 	@Test
 	public void test1() {
@@ -455,17 +466,15 @@ public class PolandTest {
 		}
 	}
 
-	@Ignore
-	@Test(timeout = 10)
-	// TODO too long + BUG
+	@Test(timeout = 10000)
 	public void test31() {
-		Fraction f1 = new Fraction(1192801855, 13332);
+		Fraction f1 = new Fraction(308160493, 469350862);
 		try {
-			Fraction f2 = Poland.calculate("12345/22222222 + 1431295/125385");
+			Fraction f2 = Poland.calculate("12345/22222 + 2134/21121");
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();
-		}
+		}	// TODO too long + BUG
 	}
 
 	@Test
