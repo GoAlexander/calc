@@ -1,6 +1,17 @@
 
 class Calc {
 
+	// Expression calculation
+	public static Fraction calculate(String s) throws Exception {
+		String str = parse(s);
+		/*
+		 * if (str.startsWith(" +") || str.startsWith(" -") || str.startsWith(
+		 * " *") || str.startsWith(" %")) throw new Exception();
+		 */
+		return calc(str);
+	}
+
+	// Parsing
 	private static String parse(String s) {
 		String str = s.replace(" ", "");
 		if (str.startsWith("-"))
@@ -8,12 +19,6 @@ class Calc {
 		if (str.contains("(-"))
 			str = str.replace("(-", "(0-");
 
-		String tmp;
-
-		/*
-		 * if (str.contains("(")) { str = str.replace("(", " ( "); } if
-		 * (str.contains(")")) { str = str.replace(")", " ) "); }
-		 */
 		if (str.contains("+")) {
 			str = str.replace("+", " + ");
 		}
@@ -26,37 +31,23 @@ class Calc {
 		if (str.contains("%")) {
 			str = str.replace("%", " % ");
 		}
-		
-		System.out.println(str);
-		tmp = str.substring(str.lastIndexOf("(")+1, str.indexOf(")"));
-		System.out.println(tmp);
-		if (str.contains("(")) {
-			tmp = str.substring(str.lastIndexOf("(") + 1, str.indexOf(")"));
-			System.out.println(tmp);
-			if (tmp.contains("+")) {
-				String arr[] = tmp.split(" \\+ ");
-				tmp = Fraction.sum(new Fraction(arr[0]), new Fraction(arr[1])).toString();
-			}
-			str=str.replace(str.substring(str.lastIndexOf("("), str.indexOf(")")+1),tmp);
-		}
 
+		// Substitute expression in brackets with result
+		String tmp;
+		while (str.contains("(")) {
+			tmp = str.substring(str.lastIndexOf("(") + 1, str.indexOf(")", str.lastIndexOf("(") + 1));
+			tmp = calc(tmp).toString();
+			str = str.replace(str.substring(str.lastIndexOf("("), str.indexOf(")", str.lastIndexOf("(") + 1) + 1), tmp);
+		}
 		return str;
 	}
 
-	public static Fraction calculate(String s) throws Exception {
-		String str = parse(s);
-		/*
-		 * if (str.startsWith(" +") || str.startsWith(" -") || str.startsWith(
-		 * " *") || str.startsWith(" %")) throw new Exception();
-		 */
+	// Calculate simple expression
+	private static Fraction calc(String str) {
 		String expression_str_line[] = str.split(" ");
-		Fraction[] frac_number = new Fraction[expression_str_line.length]; // make
-																			// it
-
+		Fraction[] frac_number = new Fraction[expression_str_line.length];
 		int j = 0;
 		for (int i = 0; i < expression_str_line.length; i++) {
-			// also make processing of
-
 			if (!expression_str_line[i].equals("+") && !expression_str_line[i].equals("-")
 					&& !expression_str_line[i].equals("*") && !expression_str_line[i].equals("%")) {
 				frac_number[j] = new Fraction(expression_str_line[i]);
