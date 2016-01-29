@@ -54,6 +54,14 @@ public class Fraction {
 		else
 			System.out.println(nom + "/" + denom);
 	}
+	
+	@Override
+	public String toString() {
+		if ((nom == 0) || (denom == 1))
+			return Integer.toString(nom);
+		else
+			return Integer.toString(nom) + "/" + Integer.toString(denom);
+	}
 
 	private void reduction() { // сокращение дроби (Но!
 								// если число на вход
