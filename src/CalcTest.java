@@ -307,10 +307,21 @@ public class CalcTest {
 	}
 
 	@Test
-	public void test17() {
+	public void test17_1() {
 		Fraction f1 = new Fraction(203, 2);
 		try {
 			Fraction f2 = Calc.calculate("50+( 5 * (( 5-1) + (5+1)) + 1  ) +1/2");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
+	@Test
+	public void test17_2() {
+		Fraction f1 = new Fraction(75);
+		try {
+			Fraction f2 = Calc.calculate("((1-1)+50/2)+( 5 * (( 5-1) + (5+1)) + 1  ) +(1/2-3/2)");
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();

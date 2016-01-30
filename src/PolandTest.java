@@ -326,10 +326,21 @@ public class PolandTest {
 	}
 
 	@Test
-	public void test19() {
+	public void test19_1() {
 		Fraction f1 = new Fraction(203, 2);
 		try {
 			Fraction f2 = Poland.calculate("50+( 5 * (( 5-1) + (5+1)) + 1  ) +1/2");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
+	@Test
+	public void test19_2() {
+		Fraction f1 = new Fraction(75);
+		try {
+			Fraction f2 = Poland.calculate("((1-1)+50/2)+( 5 * (( 5-1) + (5+1)) + 1  ) +(1/2-3/2)");
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();
@@ -488,7 +499,7 @@ public class PolandTest {
 	public void test33() {
 		Fraction f1 = new Fraction(203, 2);
 		try {
-			Fraction f2 = Calc.calculate("50+( 5 * (( 5-1) + (5+1)) + 1  ) +1/2");
+			Fraction f2 = Poland.calculate("50+( 5 * (( 5-1) + (5+1)) + 1  ) +1/2");
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();
@@ -499,7 +510,7 @@ public class PolandTest {
 	public void test34() {
 		Fraction f1 = new Fraction("0");
 		try {
-			Fraction f2 = Calc.calculate("(-1) + 1");
+			Fraction f2 = Poland.calculate("(-1) + 1");
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();
@@ -510,7 +521,7 @@ public class PolandTest {
 	public void test35() {
 		Fraction f1 = new Fraction(-3, 2);
 		try {
-			Fraction f2 = Calc.calculate("1+(2/4-3)");
+			Fraction f2 = Poland.calculate("1+(2/4-3)");
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();
@@ -521,7 +532,7 @@ public class PolandTest {
 	public void test36() {
 		Fraction f1 = new Fraction(-3, 2);
 		try {
-			Fraction f2 = Calc.calculate("1+(2/4-3)+(-4+5)-1");
+			Fraction f2 = Poland.calculate("1+(2/4-3)+(-4+5)-1");
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();
@@ -532,7 +543,7 @@ public class PolandTest {
 	public void test37() {
 		Fraction f1 = new Fraction("0");
 		try {
-			Fraction f2 = Calc.calculate("-1+(-2+3)");
+			Fraction f2 = Poland.calculate("-1+(-2+3)");
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();
