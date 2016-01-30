@@ -30,9 +30,9 @@ public class Main {
 			if (str.equals("exit"))
 				break;
 			else {
-				System.out.print("=");
 				try {
 					result = Calc.calculate(str);
+					System.out.print("=");
 					result.print();
 				} catch (Exception e) {
 					System.out.println("Error");

@@ -1,9 +1,15 @@
 
 class Calc {
+	
+	static boolean debug = true; //for DEBUG
 
 	// Expression calculation
 	public static Fraction calculate(String s) throws Exception {
+		if (debug)
+			System.out.println("DEBUG: " + s);
+		
 		String str = parse(s);
+		
 		/*
 		 * if (str.startsWith(" +") || str.startsWith(" -") || str.startsWith(
 		 * " *") || str.startsWith(" %")) throw new Exception();
@@ -31,6 +37,9 @@ class Calc {
 		if (str.contains("%")) {
 			str = str.replace("%", " % ");
 		}
+		
+		if (debug)
+			System.out.println("DEBUG: " + str);
 
 		// Substitute expression in brackets with result
 		String tmp;
@@ -38,6 +47,9 @@ class Calc {
 			tmp = str.substring(str.lastIndexOf("(") + 1, str.indexOf(")", str.lastIndexOf("(") + 1));
 			tmp = calc(tmp).toString();
 			str = str.replace(str.substring(str.lastIndexOf("("), str.indexOf(")", str.lastIndexOf("(") + 1) + 1), tmp);
+			
+			if (debug)
+				System.out.println("DEBUG: " + str);
 		}
 		return str;
 	}

@@ -28,9 +28,9 @@ public class MainPoland extends Main {
 			if (str.equals("exit"))
 				break;
 			else {
-				System.out.print("=");
 				try {
 					result = Poland.calculate(str);
+					System.out.print("=");
 					result.print();
 				} catch (Exception e) {
 					System.out.println("Error");

@@ -1,6 +1,6 @@
 Implementation of fraction calculator. University project (lab5, "OOP", HSE).
 
-The main idea of this project: learn how to use Junit.
+The main idea of this project: learn how to use Junit and tests overall.
 
 Usage of this calculator:
 	Just start it and enter all expressions you want.

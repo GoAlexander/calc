@@ -7,6 +7,7 @@ import org.junit.Test;
 
 public class PolandTest {
 	
+	/*
 	@Before
 	public void setUp() {
 		System.out.println("@Before setUp");
@@ -16,7 +17,7 @@ public class PolandTest {
 	public void tearDown() {
 		System.out.println("@After tearDown");
 	}
-	
+	*/
 
 	@Test
 	public void test1() {
