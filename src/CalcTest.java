@@ -327,10 +327,10 @@ public class CalcTest {
 			fail();
 		}
 	}
-	
+
 	@Test
 	public void test19() {
-		Fraction f1 = new Fraction(-3,2);
+		Fraction f1 = new Fraction(-3, 2);
 		try {
 			Fraction f2 = Calc.calculate("1+(2/4-3)");
 			assertTrue(f1.equals(f2));
@@ -338,10 +338,10 @@ public class CalcTest {
 			fail();
 		}
 	}
-	
+
 	@Test
 	public void test20() {
-		Fraction f1 = new Fraction(-3,2);
+		Fraction f1 = new Fraction(-3, 2);
 		try {
 			Fraction f2 = Calc.calculate("1+(2/4-3)+(-4+5)-1");
 			assertTrue(f1.equals(f2));
@@ -349,7 +349,7 @@ public class CalcTest {
 			fail();
 		}
 	}
-	
+
 	@Test
 	public void test21() {
 		Fraction f1 = new Fraction("0");
@@ -361,63 +361,144 @@ public class CalcTest {
 		}
 	}
 
-	/*
-	 * @Test public void test17() { Fraction f1 = new Fraction(4, 5); try {
-	 * Fraction f2 = Calc.calculate("2/ (5/2)"); assertTrue(f1.equals(f2)); }
-	 * catch (Exception e) { fail(); } }
-	 * 
-	 * @Test public void test18() { Fraction f1 = new Fraction(9, 2); try {
-	 * Fraction f2 = Calc.calculate("2/1 + 5/(2/1)"); assertTrue(f1.equals(f2));
-	 * } catch (Exception e) { fail(); } }
-	 * 
-	 * @Test public void test20() { Fraction f1 = new Fraction(1, 2); try {
-	 * Fraction f2 = Calc.calculate("  1/2  "); assertTrue(f1.equals(f2)); }
-	 * catch (Exception e) { fail(); } }
-	 * 
-	 * @Test public void test21() { Fraction f1 = new Fraction(-1800); try {
-	 * Fraction f2 = Calc.calculate("-1000*2 + ((50+150))");
-	 * assertTrue(f1.equals(f2)); } catch (Exception e) { fail(); } }
-	 * 
-	 * @Test public void test22() { Fraction f1 = new Fraction(2600, 3); try {
-	 * Fraction f2 = Calc.calculate("1000*2/3 + ((50+150))");
-	 * assertTrue(f1.equals(f2)); } catch (Exception e) { fail(); } }
-	 * 
-	 * @Test public void test23() { Fraction f1 = new Fraction(25, 2); try {
-	 * Fraction f2 = Calc.calculate("5*2 + 5/2"); assertTrue(f1.equals(f2)); }
-	 * catch (Exception e) { fail(); } }
-	 * 
-	 * @Test public void test24() { Fraction f1 = new Fraction(35, 2); try {
-	 * Fraction f2 = Calc.calculate("5* (2 + 5) /2"); assertTrue(f1.equals(f2));
-	 * } catch (Exception e) { fail(); } }
-	 * 
-	 * @Ignore
-	 * 
-	 * @Test public void test26() { Fraction f1 = new Fraction("222222222222");
-	 * try { Fraction f2 = Calc.calculate("111111111111 * 2");
-	 * assertTrue(f1.equals(f2)); } catch (Exception e) { fail(); } }
-	 * 
-	 * @Ignore
-	 * 
-	 * @Test public void test27() { Fraction f1 = new Fraction("111111111112");
-	 * try { Fraction f2 = Calc.calculate("111111111111 + 1");
-	 * assertTrue(f1.equals(f2)); } catch (Exception e) { fail(); } }
-	 * 
-	 * @Ignore
-	 * 
-	 * @Test(timeout = 2) // number in milliseconds // TODO BUG to long public
-	 * void test29() { Fraction f1 = new Fraction("1111111111"); try { Fraction
-	 * f2 = Calc.calculate("1111111111"); assertTrue(f1.equals(f2)); } catch
-	 * (Exception e) { fail(); } }
-	 * 
-	 * @Ignore
-	 * 
-	 * @Test(timeout = 10) // TODO too long + BUG public void test31() {
-	 * Fraction f1 = new Fraction(1192801855, 13332); try { Fraction f2 =
-	 * Calc.calculate"12345/22222222 + 1431295/125385");
-	 * assertTrue(f1.equals(f2)); } catch (Exception e) { fail(); } }
-	 * 
-	 * @Test public void test32() { Fraction f1 = new Fraction("5"); try {
-	 * Fraction f2 = Calc.calculate("5 - 1/2*1/3  + 1/6");
-	 * assertTrue(f1.equals(f2)); } catch (Exception e) { fail(); } }
-	 */
+	@Test
+	public void test22() {
+		Fraction f1 = new Fraction(4, 5);
+		try {
+			Fraction f2 = Calc.calculate("2% (5/2)");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Test
+	public void test23() {
+		Fraction f1 = new Fraction(9, 2);
+		try {
+			Fraction f2 = Calc.calculate("2/1 + 5/(2/1)");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Test
+	public void test24() {
+		Fraction f1 = new Fraction(1, 2);
+		try {
+			Fraction f2 = Calc.calculate("  1/2  ");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Test
+	public void test25() {
+		Fraction f1 = new Fraction(-1800);
+		try {
+			Fraction f2 = Calc.calculate("-1000*2 + ((50+150))");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Test
+	public void test26() {
+		Fraction f1 = new Fraction(2600, 3);
+		try {
+			Fraction f2 = Calc.calculate("1000*2/3 + ((50+150))");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Test
+	public void test27() {
+		Fraction f1 = new Fraction(25, 2);
+		try {
+			Fraction f2 = Calc.calculate("5*2 + 5/2");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Test
+	public void test28() {
+		Fraction f1 = new Fraction(35, 2);
+		try {
+			Fraction f2 = Calc.calculate("5* (2 + 5) %2");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Ignore
+
+	@Test
+	public void test29() {
+		Fraction f1 = new Fraction("222222222222");
+		try {
+			Fraction f2 = Calc.calculate("111111111111 * 2");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Ignore
+
+	@Test
+	public void test30() {
+		Fraction f1 = new Fraction("111111111112");
+		try {
+			Fraction f2 = Calc.calculate("111111111111 + 1");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Ignore
+
+	@Test(timeout = 2) // number in milliseconds // TODO BUG to long publi
+	public void test31() {
+		Fraction f1 = new Fraction("1111111111");
+		try {
+			Fraction f2 = Calc.calculate("1111111111");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Ignore
+
+	@Test(timeout = 10) // TODO too long + BUG 
+	public void test32() {
+		Fraction f1 = new Fraction(1192801855, 13332);
+		try {
+			Fraction f2 = Calc.calculate("12345/22222222 + 1431295/125385");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Test
+	public void test33() {
+		Fraction f1 = new Fraction("5");
+		try {
+			Fraction f2 = Calc.calculate("5 - 1/2*1/3  + 1/6");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
 }

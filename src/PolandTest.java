@@ -6,18 +6,12 @@ import org.junit.After;
 import org.junit.Test;
 
 public class PolandTest {
-	
+
 	/*
-	@Before
-	public void setUp() {
-		System.out.println("@Before setUp");
-	}
-	
-	@After
-	public void tearDown() {
-		System.out.println("@After tearDown");
-	}
-	*/
+	 * @Before public void setUp() { System.out.println("@Before setUp"); }
+	 * 
+	 * @After public void tearDown() { System.out.println("@After tearDown"); }
+	 */
 
 	@Test
 	public void test1() {
@@ -467,6 +461,7 @@ public class PolandTest {
 		}
 	}
 
+	@Ignore
 	@Test(timeout = 10000)
 	public void test31() {
 		Fraction f1 = new Fraction(308160493, 469350862);
@@ -475,7 +470,7 @@ public class PolandTest {
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();
-		}	// TODO too long + BUG
+		} // TODO too long + BUG
 	}
 
 	@Test
@@ -483,6 +478,61 @@ public class PolandTest {
 		Fraction f1 = new Fraction("5");
 		try {
 			Fraction f2 = Poland.calculate("5 - 1/2*1/3  + 1/6");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Test
+	public void test33() {
+		Fraction f1 = new Fraction(203, 2);
+		try {
+			Fraction f2 = Calc.calculate("50+( 5 * (( 5-1) + (5+1)) + 1  ) +1/2");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Test
+	public void test34() {
+		Fraction f1 = new Fraction("0");
+		try {
+			Fraction f2 = Calc.calculate("(-1) + 1");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Test
+	public void test35() {
+		Fraction f1 = new Fraction(-3, 2);
+		try {
+			Fraction f2 = Calc.calculate("1+(2/4-3)");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Test
+	public void test36() {
+		Fraction f1 = new Fraction(-3, 2);
+		try {
+			Fraction f2 = Calc.calculate("1+(2/4-3)+(-4+5)-1");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	@Test
+	public void test37() {
+		Fraction f1 = new Fraction("0");
+		try {
+			Fraction f2 = Calc.calculate("-1+(-2+3)");
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();

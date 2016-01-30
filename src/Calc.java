@@ -1,7 +1,7 @@
 
 class Calc {
 
-	static boolean debug = false; // for DEBUG
+	static boolean debug = true; // for DEBUG
 
 	// Expression calculation
 	public static Fraction calculate(String s) throws Exception {
@@ -16,15 +16,12 @@ class Calc {
 			tmp = calc(tmp).toString();
 			str = str.replace(str.substring(str.lastIndexOf("("), str.indexOf(")", str.lastIndexOf("(") + 1) + 1), tmp);
 		}
-		/*
-		 * if (str.startsWith(" +") || str.startsWith(" -") || str.startsWith(
-		 * " *") || str.startsWith(" %")) throw new Exception();
-		 */
+
 		return calc(str);
 	}
 
 	static private boolean isOperator(char c) {
-		if (("+-%*()".indexOf(c) != -1))
+		if (("+-%)".indexOf(c) != -1))
 			return true;
 		return false;
 	}
@@ -53,49 +50,66 @@ class Calc {
 
 		int first = -2, last = -2;
 		char arr[] = str.toCharArray();
-		int i=0;
-		for (;i < arr.length;i++) {
+		int index = 0;
+		String tmp[] = new String[arr.length];
+		for (int i = 0; i < arr.length; i++) {
+	
 			if (arr[i] == '*' || arr[i] == '%') {
+				// Find first
 				for (int j = i - 1; j != 0; j--) {
-					if(arr[j]=='(')
-					{
-						first=-2;
+					if (arr[j] == ')') {
+						for (int k = 0; k != arr.length; k++) {
+							if (arr[k] == '(') {
+								first = k;
+								break;
+							}
+						}
+						break;
+					}
+					if (arr[j] == '(') {
+						first = j;
 						break;
 					}
 					if (isOperator(arr[j])) {
-						first = j+2;
+						first = j + 2;
 						break;
 					}
-					first = j-1;
+					first = j - 1;
 				}
+				
+				//Find last
 				for (int j = i + 1; j != arr.length; j++) {
-					if(arr[j]==')')
-					{
-						last=-2;
+					if (arr[j] == '(') {
+						for (int k = arr.length-1; k != 0; k--) {
+							if (arr[k] == ')') {
+								last = k;
+								break;
+							}
+						}
+						break;
+					}
+					if (arr[j] == ')') {
+						last = j;
 						break;
 					}
 					if (isOperator(arr[j])) {
-						last = j-1;
+						last = j - 1;
 						break;
 					}
-					last = j+1;
+					last = j + 1;
 				}
+				
+				// Save this expression
 				if (first != -2 && last != -2) {
-					String tmp;
-					/*if (last == arr.length - 1)
-						last = last + 1;
-					else
-						last = last - 1;
-					if (first != 1)
-						first = first + 2;
-					else
-						first = first - 1;*/
-					tmp = str.substring(first, last);
-					str = str.replace(tmp, "(" + tmp + ")");
+					tmp[index] = str.substring(first, last);
+					index++;
 				}
-				System.out.println("DEBUG: " + str);
+				
 			}
 		}
+		// Add brackets
+		for (int j = 0; j < index; j++)
+			str = str.replace(tmp[j], "(" + tmp[j] + ")");
 
 		if (debug)
 			System.out.println("DEBUG: " + str);
