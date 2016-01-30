@@ -24,7 +24,7 @@ class Calc {
 	}
 
 	static private boolean isOperator(char c) {
-		if (("+-/*".indexOf(c) != -1))
+		if (("+-%*()".indexOf(c) != -1))
 			return true;
 		return false;
 	}
@@ -53,40 +53,43 @@ class Calc {
 
 		int first = -2, last = -2;
 		char arr[] = str.toCharArray();
-		for (int i = 0; i < arr.length; i++) {
+		int i=0;
+		for (;i < arr.length;i++) {
 			if (arr[i] == '*' || arr[i] == '%') {
 				for (int j = i - 1; j != 0; j--) {
-					if (arr[j] == '(') {
-						first = -2;
+					if(arr[j]=='(')
+					{
+						first=-2;
 						break;
 					}
 					if (isOperator(arr[j])) {
-						first = j;
+						first = j+2;
 						break;
 					}
-					first = j;
+					first = j-1;
 				}
 				for (int j = i + 1; j != arr.length; j++) {
-					if (arr[j] == ')') {
-						last = -2;
+					if(arr[j]==')')
+					{
+						last=-2;
 						break;
 					}
 					if (isOperator(arr[j])) {
-						last = j;
+						last = j-1;
 						break;
 					}
-					last = j;
+					last = j+1;
 				}
 				if (first != -2 && last != -2) {
 					String tmp;
-					if (last == arr.length - 1)
+					/*if (last == arr.length - 1)
 						last = last + 1;
 					else
 						last = last - 1;
 					if (first != 1)
 						first = first + 2;
 					else
-						first = first - 1;
+						first = first - 1;*/
 					tmp = str.substring(first, last);
 					str = str.replace(tmp, "(" + tmp + ")");
 				}
