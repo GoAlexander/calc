@@ -4,9 +4,10 @@ import fraction.Fraction;
 import static org.junit.Assert.*;
 
 import org.junit.Ignore;
-import org.junit.Before;
-import org.junit.After;
+//import org.junit.Before;
+//import org.junit.After;
 import org.junit.Test;
+
 
 public class PolandTest {
 
@@ -154,7 +155,6 @@ public class PolandTest {
 		try {
 			Fraction f2 = Poland.calculate("3/4 + 1/4");
 			assertTrue(f1.equals(f2));
-			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();
 		}
@@ -288,6 +288,17 @@ public class PolandTest {
 		Fraction f2 = Poland.calculate("1 + (2-3");
 	}
 
+	@Test
+	public void test17_1() {
+		Fraction f1 = new Fraction("0");
+		try {
+			Fraction f2 = Poland.calculate("(-1) + 1");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
 	@Test
 	public void test17() {
 		Fraction f1 = new Fraction(4, 5);
@@ -446,6 +457,19 @@ public class PolandTest {
 		}
 	}
 
+	@Ignore
+
+	@Test(timeout = 10) // TODO too long + BUG
+	public void test30_1() {
+		Fraction f1 = new Fraction(1192801855, 13332);
+		try {
+			Fraction f2 = Poland.calculate("12345/22222222 + 1431295/125385");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
 	@Test
 	public void test30() {
 		Fraction f1 = new Fraction("55555");
@@ -481,28 +505,6 @@ public class PolandTest {
 	}
 
 	@Test
-	public void test33() {
-		Fraction f1 = new Fraction(203, 2);
-		try {
-			Fraction f2 = Poland.calculate("50+( 5 * (( 5-1) + (5+1)) + 1  ) +1/2");
-			assertTrue(f1.equals(f2));
-		} catch (Exception e) {
-			fail();
-		}
-	}
-
-	@Test
-	public void test34() {
-		Fraction f1 = new Fraction("0");
-		try {
-			Fraction f2 = Poland.calculate("(-1) + 1");
-			assertTrue(f1.equals(f2));
-		} catch (Exception e) {
-			fail();
-		}
-	}
-
-	@Test
 	public void test35() {
 		Fraction f1 = new Fraction(-3, 2);
 		try {
@@ -529,6 +531,28 @@ public class PolandTest {
 		Fraction f1 = new Fraction("0");
 		try {
 			Fraction f2 = Poland.calculate("-1+(-2+3)");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
+	@Test
+	public void test49() {
+		Fraction f1 = new Fraction(-5,3);
+		try {
+			Fraction f2 = Poland.calculate("-1+(-2/3)");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
+	@Test
+	public void test50() {
+		Fraction f1 = new Fraction(-23,4);
+		try {
+			Fraction f2 = Poland.calculate("(-1)/(-4)+(-2)*3");
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();
