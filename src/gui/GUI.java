@@ -13,10 +13,11 @@ import poland.Poland;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class GUI {
 
-	private JFrame frame;
+	private JFrame frmFractionCalculator;
 	private JTextField textField;
 	
 	String str;
@@ -31,7 +32,7 @@ public class GUI {
 			public void run() {
 				try {
 					GUI window = new GUI();
-					window.frame.setVisible(true);
+					window.frmFractionCalculator.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -50,11 +51,12 @@ public class GUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setResizable(false);
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmFractionCalculator = new JFrame();
+		frmFractionCalculator.setTitle("Fraction Calculator");
+		frmFractionCalculator.setResizable(false);
+		frmFractionCalculator.setBounds(100, 100, 440, 142);
+		frmFractionCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmFractionCalculator.getContentPane().setLayout(null);
 		
 		JButton btnCalculate = new JButton("Calculate");
 		btnCalculate.addActionListener(new ActionListener() {
@@ -66,8 +68,8 @@ public class GUI {
 				
 			}
 		});
-		btnCalculate.setBounds(0, 243, 450, 57);
-		frame.getContentPane().add(btnCalculate);
+		btnCalculate.setBounds(0, 61, 440, 53);
+		frmFractionCalculator.getContentPane().add(btnCalculate);
 		
 		textField = new JTextField();
 		textField.addActionListener(new ActionListener() {
@@ -77,7 +79,7 @@ public class GUI {
 		});
 		textField.setFont(new Font("Dialog", Font.BOLD, 20));
 		textField.setBounds(0, 0, 450, 65);
-		frame.getContentPane().add(textField);
+		frmFractionCalculator.getContentPane().add(textField);
 		textField.setColumns(10);
 	}
 }
