@@ -12,21 +12,47 @@ class Calc {
 			System.out.println("DEBUG: " + s);
 
 		String str = parse(s);
-		// Substitute expression in brackets with result
-		String tmp;
+
+		if (debug)
+			System.out.println("DEBUG: " + str);
+
 		while (str.contains("(")) {
-			tmp = str.substring(str.lastIndexOf("(") + 1, str.indexOf(")", str.lastIndexOf("(") + 1));
-			tmp = calc(tmp).toString();
-			str = str.replace(str.substring(str.lastIndexOf("("), str.indexOf(")", str.lastIndexOf("(") + 1) + 1), tmp);
+			String tmp = str.substring(str.lastIndexOf("(") + 1, str.indexOf(")", str.lastIndexOf("(") + 1));
+			str = str.replace(str.substring(str.lastIndexOf("("), str.indexOf(")", str.lastIndexOf("(") + 1) + 1),
+					calc(tmp).toString());
 		}
 
-		return calc(str);
-	}
+		if (debug)
+			System.out.println("DEBUG: " + str);
 
-	static private boolean isOperator(char c) {
-		if (("+-%)".indexOf(c) != -1))
-			return true;
-		return false;
+		if ((str.contains("*")) || (str.contains("%"))) {
+			String tmp;
+			int first = 0;
+			int last = 0;
+
+			for (int i = 0; i < str.length(); i++) {
+				if ((str.charAt(i) == '*') || (str.charAt(i) == '%')) {
+					first = i - 2;
+					while ((first >= 0) && (Character.isDigit(str.charAt(first)) || (str.charAt(first) == '/'))) {
+						first--;
+					}
+					last = i + 2;
+					if (str.charAt(last) == '-')
+						last = last + 2;
+					while ((last < str.length())
+							&& ((str.charAt(last) == '/') || (Character.isDigit(str.charAt(last))))) {
+						last++;
+					}
+				}
+			}
+			tmp = str.substring(first + 1, last);
+			str = str.replace(tmp, calc(tmp).toString());
+		}
+
+		if (debug)
+			System.out.println("DEBUG: " + str);
+
+		return calc(str);
 	}
 
 	// Parsing
@@ -45,77 +71,10 @@ class Calc {
 		}
 		if (str.contains("*")) {
 			str = str.replace("*", " * ");
-
 		}
 		if (str.contains("%")) {
 			str = str.replace("%", " % ");
 		}
-
-		int first = -2, last = -2;
-		char arr[] = str.toCharArray();
-		int index = 0;
-		String tmp[] = new String[arr.length];
-		for (int i = 0; i < arr.length; i++) {
-
-			if (arr[i] == '*' || arr[i] == '%') {
-				// Find first
-				for (int j = i - 1; j != 0; j--) {
-					if (arr[j] == ')') {
-						for (int k = 0; k != arr.length; k++) {
-							if (arr[k] == '(') {
-								first = k;
-								break;
-							}
-						}
-						break;
-					}
-					if (arr[j] == '(') {
-						first = j;
-						break;
-					}
-					if (isOperator(arr[j])) {
-						first = j + 2;
-						break;
-					}
-					first = j - 1;
-				}
-
-				// Find last
-				for (int j = i + 1; j != arr.length; j++) {
-					if (arr[j] == '(') {
-						for (int k = arr.length - 1; k != 0; k--) {
-							if (arr[k] == ')') {
-								last = k;
-								break;
-							}
-						}
-						break;
-					}
-					if (arr[j] == ')') {
-						last = j;
-						break;
-					}
-					if (isOperator(arr[j])) {
-						last = j - 1;
-						break;
-					}
-					last = j + 1;
-				}
-
-				// Save this expression
-				if (first != -2 && last != -2) {
-					tmp[index] = str.substring(first, last);
-					index++;
-				}
-
-			}
-		}
-		// Add brackets
-		for (int j = 0; j < index; j++)
-			str = str.replace(tmp[j], "(" + tmp[j] + ")");
-
-		if (debug)
-			System.out.println("DEBUG: " + str);
 
 		return str;
 	}

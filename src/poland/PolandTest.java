@@ -558,4 +558,15 @@ public class PolandTest {
 			fail();
 		}
 	}
+	
+	@Test
+	public void test51() {
+		Fraction f1 = new Fraction(-10);
+		try {
+			Fraction f2 = Poland.calculate("5*(1-3)");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
 }
