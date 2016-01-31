@@ -76,6 +76,10 @@ class Calc {
 			str = str.replace("%", " % ");
 		}
 
+		if ((str.contains("%"))&&(!str.contains("*"))&&(!str.contains("+"))&&(!str.contains("-"))&&(!str.contains(")"))&&(!str.contains("("))) {
+			str = str.replace(" % ", "/");
+		}
+		
 		return str;
 	}
 

@@ -313,7 +313,7 @@ public class CalcTest {
 	public void test18() {
 		Fraction f1 = new Fraction(9, 2);
 		try {
-			Fraction f2 = Calc.calculate("2/1 + 5/(2/1)");
+			Fraction f2 = Calc.calculate("2/1 + 5%(2/1)");
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();
@@ -563,6 +563,17 @@ public class CalcTest {
 		Fraction f1 = new Fraction(-10);
 		try {
 			Fraction f2 = Calc.calculate("5*(1-3)");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
+	@Test
+	public void test52() {
+		Fraction f1 = new Fraction(1);
+		try {
+			Fraction f2 = Calc.calculate("4%2%2");
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();
