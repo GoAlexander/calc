@@ -55,6 +55,20 @@ public class Fraction {
 		else
 			System.out.println(nom + "/" + denom);
 	}
+	
+	public String getString() { // print + checking (+processing_of_exeptions)
+		String result;
+		if (nom == 0 && denom != 0)
+			result = "0";
+		else if (denom == 1)
+			result = Integer.toString(nom);
+		else if (denom == 0)
+			result = "Error! Your denom =0, start new program!";
+		else
+			result = Integer.toString(nom) + "/" + Integer.toString(denom);
+		
+		return result;
+	}
 
 	@Override
 	public String toString() {
