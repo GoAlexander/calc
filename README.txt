@@ -7,9 +7,9 @@ Usage of this calculator:
 
 This Calculator supports:
 	-Operations:
-		+, -, *, /
+		+, -, *, %
 	-Brackets
-	-Priority of brackets, * and /
+	-Priority of brackets, * and %
 	-you can enter with or without spaces
 
 

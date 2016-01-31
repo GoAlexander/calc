@@ -1,7 +1,7 @@
 package stack;
 
 public class Stack {
-	
+
 	int[] data;
 
 	Stack(int capacity) {
@@ -11,13 +11,11 @@ public class Stack {
 	Stack() {
 		this(1);
 	}
+
 	int tail = 0;
 
 	void push(int value) {
-		try {
-			data[tail + 1] = value;
-			tail = tail + 1;
-		} catch (ArrayIndexOutOfBoundsException e) {
+		if (data.length <= tail + 1) {
 			int[] stacktemp = new int[(tail + 1) * 2];
 			for (int i = 0; i < tail; i++)
 				stacktemp[i] = data[i];
@@ -26,8 +24,12 @@ public class Stack {
 			data = new int[tail];
 			for (int i = 0; i < tail; i++)
 				data[i] = stacktemp[i];
+		} else if (data.length > tail + 1) {
+			data[tail + 1] = value;
+			tail = tail + 1;
 		}
 	}
+
 
 	void pop() throws Exception {
 		if (tail != 0) {
@@ -42,11 +44,11 @@ public class Stack {
 			throw new Exception(); // Stack is empty
 	}
 
-	int peek() {
+	int peek() throws Exception {
 		if (tail != 0)
 			return data[tail - 1];
 		else
-			return -1;
+			throw new Exception();
 	}
 
 	boolean isEmpty() {
@@ -62,7 +64,7 @@ public class Stack {
 			s = "data[" + i + "]:\n" + Integer.toString(data[i]) + "\n" + s;
 		return s;
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
 		if (!(o instanceof Stack))

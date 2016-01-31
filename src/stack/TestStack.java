@@ -64,13 +64,17 @@ public class TestStack {
 
 	@Test
 	public void test4() {
-		setUp();
-		st2.push(1);
-		st2.push(2);
-		st2.push(2);
-		st2.push(3);
-		st2.push(-4);
-		assertTrue(st1.peek() == st2.peek());
+		try {
+			setUp();
+			st2.push(1);
+			st2.push(2);
+			st2.push(2);
+			st2.push(3);
+			st2.push(-4);
+			assertTrue(st1.peek() == st2.peek());
+		} catch (Exception e) {
+			fail();
+		}
 	}
 
 	@Test
