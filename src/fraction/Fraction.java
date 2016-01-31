@@ -1,20 +1,21 @@
+package fraction;
 
 public class Fraction {
 	private int nom, denom;
 
-	Fraction(int nom, int denom) {
+	public Fraction(int nom, int denom) {
 		setFraction(nom, denom);
 	}
 
-	Fraction() {
+	public Fraction() {
 		this(0, 1);
 	}
 
-	Fraction(int nom) {
+	public Fraction(int nom) {
 		this(nom, 1);
 	}
 
-	Fraction(String s) throws NumberFormatException {
+	public Fraction(String s) throws NumberFormatException {
 		if (s.contains("/")) {
 			String[] parts = s.split("/");
 			int part1 = Integer.parseInt(parts[0]);
@@ -26,25 +27,25 @@ public class Fraction {
 			setFraction(Integer.parseInt(s));
 	}
 
-	void setFraction(int nom, int denom) {
+	public void setFraction(int nom, int denom) {
 		this.nom = nom;
 		this.denom = denom;
 		fractionStandartization();
 	}
 
-	void setFraction(int nom) {
+	public void setFraction(int nom) {
 		setFraction(nom, 1);
 	}
 
-	int getNom() {
+	public int getNom() {
 		return nom;
 	}
 
-	int getDenom() {
+	public int getDenom() {
 		return denom;
 	}
 
-	void print() { // print + checking (+processing_of_exeptions)
+	public void print() { // print + checking (+processing_of_exeptions)
 		if (nom == 0 && denom != 0)
 			System.out.println(0);
 		else if (denom == 1)
@@ -54,7 +55,7 @@ public class Fraction {
 		else
 			System.out.println(nom + "/" + denom);
 	}
-	
+
 	@Override
 	public String toString() {
 		if ((nom == 0) || (denom == 1))
@@ -95,12 +96,12 @@ public class Fraction {
 		reduction();
 	}
 
-	void addition(Fraction f2) {
+	public void addition(Fraction f2) {
 		addition(this, f2);
 		fractionStandartization();
 	}
 
-	void addition(Fraction f1, Fraction f2) {
+	public void addition(Fraction f1, Fraction f2) {
 		nom = f1.nom * f2.denom + f1.denom * f2.nom;
 		denom = f1.denom * f2.denom;
 		fractionStandartization();
@@ -113,18 +114,18 @@ public class Fraction {
 		return f3;
 	}
 
-	void subtract(Fraction f1, Fraction f2) {
+	public void subtract(Fraction f1, Fraction f2) {
 		nom = f1.nom * f2.denom - f2.nom * f1.denom;
 		denom = f1.denom * f2.denom;
 		fractionStandartization();
 	}
 
-	void subtract(Fraction f) {
+	public void subtract(Fraction f) {
 		subtract(this, f);
 		fractionStandartization();
 	}
 
-	void multiply(Fraction f1, Fraction f2) {
+	public void multiply(Fraction f1, Fraction f2) {
 		nom = f1.nom * f2.nom;
 		denom = f1.denom * f2.denom;
 		fractionStandartization();
@@ -137,7 +138,7 @@ public class Fraction {
 		return f3;
 	}
 
-	void multiply(Fraction f) {
+	public void multiply(Fraction f) {
 		multiply(this, f);
 		fractionStandartization();
 	}
@@ -149,13 +150,13 @@ public class Fraction {
 		return f3;
 	}
 
-	void divide(Fraction f1, Fraction f2) {
+	public void divide(Fraction f1, Fraction f2) {
 		nom = f1.nom * f2.denom;
 		denom = f1.denom * f2.nom;
 		fractionStandartization();
 	}
 
-	void divide(Fraction f) {
+	public void divide(Fraction f) {
 		divide(this, f);
 		fractionStandartization();
 	}
@@ -167,7 +168,7 @@ public class Fraction {
 		return f3;
 	}
 
-	boolean compare(Fraction f1, Fraction f2, boolean comparing_var) {
+	public boolean compare(Fraction f1, Fraction f2, boolean comparing_var) {
 		f1.reduction();
 		f2.reduction();
 		if (f1.nom == f2.nom && f1.denom == f2.denom)

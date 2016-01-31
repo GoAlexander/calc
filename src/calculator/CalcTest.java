@@ -1,3 +1,6 @@
+package calculator;
+
+import fraction.Fraction;
 import static org.junit.Assert.*;
 
 import org.junit.Ignore;
@@ -316,7 +319,7 @@ public class CalcTest {
 			fail();
 		}
 	}
-	
+
 	@Test
 	public void test17_2() {
 		Fraction f1 = new Fraction(75);
@@ -490,7 +493,7 @@ public class CalcTest {
 
 	@Ignore
 
-	@Test(timeout = 10) // TODO too long + BUG 
+	@Test(timeout = 10) // TODO too long + BUG
 	public void test32() {
 		Fraction f1 = new Fraction(1192801855, 13332);
 		try {

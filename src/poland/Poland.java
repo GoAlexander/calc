@@ -1,33 +1,36 @@
+package poland;
+
+import fraction.Fraction;
 import java.util.Stack;
 import java.util.logging.Logger;
 
 public class Poland {
-	
+
 	private static Logger log = Logger.getLogger(Poland.class.getName());
 	static boolean debug = true;
-	
+
 	// Method Calculate takes expression as string and return result
 	// This method calls another methods of current class
 	static public Fraction calculate(String input) {
-		
+
 		if (debug)
 			log.info(input);
-		
+
 		if (input.startsWith("-"))
 			input = "0" + input;
 		if (input.contains("(-"))
 			input = input.replace("(-", "(0-");
-		
+
 		if (debug)
 			log.info(input);
-		
+
 		String output = getExpression(input); // Transformation of expression to
 												// postfix form
 		if (debug)
 			log.info(output);
-		
+
 		Fraction result = counting(output); // returned expression solving
-		
+
 		return result; // return result
 	}
 

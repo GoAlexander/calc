@@ -1,3 +1,6 @@
+package calculator;
+
+import fraction.Fraction;
 import java.util.Scanner;
 
 public class Main {
@@ -20,7 +23,7 @@ public class Main {
 		System.out.println("Output: 203/2");
 		System.out.println("Supported operations: +, -, *, /");
 		System.out.println("Enter <exit> to end program.\n");
-		
+
 		String str;
 		for (;;) // implement checking of string?
 		{

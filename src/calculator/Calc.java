@@ -1,3 +1,6 @@
+package calculator;
+
+import fraction.Fraction;
 
 class Calc {
 
@@ -53,7 +56,7 @@ class Calc {
 		int index = 0;
 		String tmp[] = new String[arr.length];
 		for (int i = 0; i < arr.length; i++) {
-	
+
 			if (arr[i] == '*' || arr[i] == '%') {
 				// Find first
 				for (int j = i - 1; j != 0; j--) {
@@ -76,11 +79,11 @@ class Calc {
 					}
 					first = j - 1;
 				}
-				
-				//Find last
+
+				// Find last
 				for (int j = i + 1; j != arr.length; j++) {
 					if (arr[j] == '(') {
-						for (int k = arr.length-1; k != 0; k--) {
+						for (int k = arr.length - 1; k != 0; k--) {
 							if (arr[k] == ')') {
 								last = k;
 								break;
@@ -98,13 +101,13 @@ class Calc {
 					}
 					last = j + 1;
 				}
-				
+
 				// Save this expression
 				if (first != -2 && last != -2) {
 					tmp[index] = str.substring(first, last);
 					index++;
 				}
-				
+
 			}
 		}
 		// Add brackets

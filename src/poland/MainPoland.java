@@ -1,6 +1,9 @@
+package poland;
+
+import fraction.Fraction;
 import java.util.Scanner;
 
-public class MainPoland extends Main {
+public class MainPoland {
 
 	public static void main(String[] args) {
 		String str;

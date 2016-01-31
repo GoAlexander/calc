@@ -1,3 +1,6 @@
+package poland;
+
+import fraction.Fraction;
 import static org.junit.Assert.*;
 
 import org.junit.Ignore;
@@ -335,7 +338,7 @@ public class PolandTest {
 			fail();
 		}
 	}
-	
+
 	@Test
 	public void test19_2() {
 		Fraction f1 = new Fraction(75);
