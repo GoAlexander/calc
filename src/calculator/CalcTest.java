@@ -324,7 +324,7 @@ public class CalcTest {
 	public void test19_1() {
 		Fraction f1 = new Fraction(203, 2);
 		try {
-			Fraction f2 = Calc.calculate("50+( 5 * (( 5-1) + (5+1)) + 1  ) +1/2");
+			Fraction f2 = Calc.calculate("50+( 5 * (( 5-1) + (5+1)) + 1  ) +1%2");
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();
@@ -335,7 +335,7 @@ public class CalcTest {
 	public void test19_2() {
 		Fraction f1 = new Fraction(75);
 		try {
-			Fraction f2 = Calc.calculate("((1-1)+50/2)+( 5 * (( 5-1) + (5+1)) + 1  ) +(1/2-3/2)");
+			Fraction f2 = Calc.calculate("((1-1)+50%2)+( 5 * (( 5-1) + (5+1)) + 1  ) +(1/2-3/2)");
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();
@@ -574,6 +574,17 @@ public class CalcTest {
 		Fraction f1 = new Fraction(1);
 		try {
 			Fraction f2 = Calc.calculate("4%2%2");
+			assertTrue(f1.equals(f2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
+	@Test
+	public void test53() {
+		Fraction f1 = new Fraction(3);
+		try {
+			Fraction f2 = Calc.calculate("4%2%2+2");
 			assertTrue(f1.equals(f2));
 		} catch (Exception e) {
 			fail();

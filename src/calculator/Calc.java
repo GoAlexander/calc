@@ -15,7 +15,8 @@ class Calc {
 
 		if (debug)
 			System.out.println("DEBUG: " + str);
-
+		
+		// Calculate expressions in brackets
 		while (str.contains("(")) {
 			String tmp = str.substring(str.lastIndexOf("(") + 1, str.indexOf(")", str.lastIndexOf("(") + 1));
 			str = str.replace(str.substring(str.lastIndexOf("("), str.indexOf(")", str.lastIndexOf("(") + 1) + 1),
@@ -24,7 +25,8 @@ class Calc {
 
 		if (debug)
 			System.out.println("DEBUG: " + str);
-
+		
+		// Calculate prioritized expressions
 		if ((str.contains("*")) || (str.contains("%"))) {
 			String tmp;
 			int first = 0;
@@ -43,15 +45,16 @@ class Calc {
 							&& ((str.charAt(last) == '/') || (Character.isDigit(str.charAt(last))))) {
 						last++;
 					}
+					tmp = str.substring(first + 1, last);
+					str = str.replace(tmp, calc(tmp).toString());
 				}
 			}
-			tmp = str.substring(first + 1, last);
-			str = str.replace(tmp, calc(tmp).toString());
 		}
 
 		if (debug)
 			System.out.println("DEBUG: " + str);
-
+		
+		// Calculate a final expression
 		return calc(str);
 	}
 
@@ -76,10 +79,6 @@ class Calc {
 			str = str.replace("%", " % ");
 		}
 
-		if ((str.contains("%"))&&(!str.contains("*"))&&(!str.contains("+"))&&(!str.contains("-"))&&(!str.contains(")"))&&(!str.contains("("))) {
-			str = str.replace(" % ", "/");
-		}
-		
 		return str;
 	}
 
