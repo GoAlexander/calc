@@ -254,59 +254,40 @@ public class CalcTest {
 		}
 	}
 
-	@Test
-	public void test13() {
-		try {
-			@SuppressWarnings("unused")
-			Fraction f = Calc.calculate("a+35");
-			fail();
-		} catch (Exception e) {
-			assertTrue(true);
-		}
+	@Test(expected = Exception.class)
+	public void test13() throws Exception {
+		@SuppressWarnings("unused")
+		Fraction f2 = Calc.calculate("a+35");
 	}
 
-	@Test
-	public void test14_1() {
-		try {
-			@SuppressWarnings("unused")
-			Fraction f2 = Calc.calculate("+ - 1");
-			fail();
-		} catch (Exception e) {
-			assertTrue(true);
-		}
+	@Test(expected = Exception.class)
+	public void test14_1() throws Exception {
+		@SuppressWarnings("unused")
+		Fraction f2 = Calc.calculate("+ - 1");
 	}
 
-	@Test
-	public void test14_2() {
-		try {
-			@SuppressWarnings("unused")
-			Fraction f2 = Calc.calculate("1+ - 1");
-			fail();
-		} catch (Exception e) {
-			assertTrue(true);
-		}
+	@Test(expected = Exception.class)
+	public void test14_2() throws Exception {
+		@SuppressWarnings("unused")
+		Fraction f2 = Calc.calculate("1+ - 1");
+	}
+	
+	@Test(expected = Exception.class)
+	public void test15() throws Exception {
+		@SuppressWarnings("unused")
+		Fraction f2 = Calc.calculate("+");
 	}
 
-	@Test
-	public void test15() {
-		try {
-			@SuppressWarnings("unused")
-			Fraction f2 = Calc.calculate("+");
-			fail();
-		} catch (Exception e) {
-			assertTrue(true);
-		}
+	@Test(expected = Exception.class)
+	public void test16_1() throws Exception {
+		@SuppressWarnings("unused")
+		Fraction f2 = Calc.calculate("1 + -");
 	}
-
-	@Test
-	public void test16() {
-		try {
-			@SuppressWarnings("unused")
-			Fraction f2 = Calc.calculate("1 + -");
-			fail();
-		} catch (Exception e) {
-			assertTrue(true);
-		}
+	
+	@Test(expected = Exception.class)
+	public void test16_2() throws Exception {
+		@SuppressWarnings("unused")
+		Fraction f2 = Calc.calculate("1 + (2-3");
 	}
 
 	@Test
