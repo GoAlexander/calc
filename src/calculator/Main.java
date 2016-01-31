@@ -13,9 +13,9 @@ public class Main {
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		System.out.println("Instructions:");
-		System.out.println("Example of usage: <100/2+( 5 * (( 5-1) + (5+1)) + 1  ) +1%2>");
+		System.out.println("Example of usage: <100/2+( 5 * (( 5-1) + (5+1)) + 1  ) +1/2>");
 		System.out.println("Output: 203/2");
-		System.out.println("Supported operations: +, -, *, %");
+		System.out.println("Supported operations: +, -, *, /");
 		System.out.println("Enter <exit> to end program.\n");
 
 		String str;
