@@ -4,16 +4,16 @@ import fraction.Fraction;
 
 class Calc {
 
-	static boolean debug = true; // for DEBUG
+	static boolean DEBUG = true; // for DEBUG
 
 	// Expression calculation
 	public static Fraction calculate(String s) {
-		if (debug)
+		if (DEBUG)
 			System.out.println("DEBUG: " + s);
 
 		String str = parse(s);
 
-		if (debug)
+		if (DEBUG)
 			System.out.println("DEBUG: " + str);
 		
 		// Calculate expressions in brackets
@@ -23,7 +23,7 @@ class Calc {
 					calc(tmp).toString());
 		}
 
-		if (debug)
+		if (DEBUG)
 			System.out.println("DEBUG: " + str);
 		
 		// Calculate prioritized expressions
@@ -51,7 +51,7 @@ class Calc {
 			}
 		}
 
-		if (debug)
+		if (DEBUG)
 			System.out.println("DEBUG: " + str);
 		
 		// Calculate a final expression
