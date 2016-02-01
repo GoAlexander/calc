@@ -7,7 +7,7 @@ class Calc {
 	static boolean debug = true; // for DEBUG
 
 	// Expression calculation
-	public static Fraction calculate(String s) throws Exception {
+	public static Fraction calculate(String s) {
 		if (debug)
 			System.out.println("DEBUG: " + s);
 

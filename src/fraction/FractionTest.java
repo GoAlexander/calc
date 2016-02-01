@@ -34,5 +34,12 @@ public class FractionTest {
 		assertTrue(f1.equals(f2));
 	}
 	
+	@Test
+	public void test5() {
+		Fraction f1 = new Fraction(1,0);
+		Fraction f2 = Fraction.div(new Fraction(1,4), new Fraction(0));
+		assertTrue(f1.equals(f2));
+	}
+	
 
 }
