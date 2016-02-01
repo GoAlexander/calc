@@ -19,10 +19,9 @@ public class GUI {
 
 	private JFrame frmFractionCalculator;
 	private JTextField textField;
-	
+
 	String str;
 	Fraction result;
-	
 
 	/**
 	 * Launch the application.
@@ -57,20 +56,24 @@ public class GUI {
 		frmFractionCalculator.setBounds(100, 100, 440, 142);
 		frmFractionCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmFractionCalculator.getContentPane().setLayout(null);
-		
+
 		JButton btnCalculate = new JButton("Calculate");
 		btnCalculate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				str = textField.getText();
-				result = Poland.calculate(str);
-				textField.setText(result.getString());
-				
+				try {
+					result = Poland.calculate(str);
+					textField.setText(result.getString());
+				} catch (Exception a) {
+					textField.setText("Error!");
+				}
+
 			}
 		});
 		btnCalculate.setBounds(0, 61, 440, 53);
 		frmFractionCalculator.getContentPane().add(btnCalculate);
-		
+
 		textField = new JTextField();
 		textField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
