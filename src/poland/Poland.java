@@ -7,13 +7,13 @@ import java.util.logging.Logger;
 public class Poland {
 
 	private static Logger log = Logger.getLogger(Poland.class.getName());
-	static boolean DEBUG = true;
+	static boolean debug = true;
 
 	// Method Calculate takes expression as string and return result
 	// This method calls another methods of current class
 	static public Fraction calculate(String input) {
 
-		if (DEBUG)
+		if (debug)
 			log.info(input);
 
 		if (input.startsWith("-"))
@@ -21,12 +21,12 @@ public class Poland {
 		if (input.contains("(-"))
 			input = input.replace("(-", "(0-");
 
-		if (DEBUG)
+		if (debug)
 			log.info(input);
 
 		String output = getExpression(input); // Transformation of expression to
 												// postfix form
-		if (DEBUG)
+		if (debug)
 			log.info(output);
 
 		Fraction result = counting(output); // returned expression solving

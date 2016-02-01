@@ -63,7 +63,7 @@ public class Fraction {
 		else if (denom == 1)
 			result = Integer.toString(nom);
 		else if (denom == 0)
-			result = "Error!";
+			result = "Error! Your denom =0, start new program!";
 		else
 			result = Integer.toString(nom) + "/" + Integer.toString(denom);
 		
