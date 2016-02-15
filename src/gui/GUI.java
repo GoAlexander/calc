@@ -7,11 +7,14 @@ import javax.swing.JButton;
 //import java.awt.BorderLayout;
 import javax.swing.JTextField;
 
+import exception.*;
 import fraction.Fraction;
+//import javafx.scene.control.SplitPane.Divider;
 import poland.Poland;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.EmptyStackException;
 import java.awt.event.ActionEvent;
 //import javax.swing.SwingConstants;
 
@@ -65,10 +68,15 @@ public class GUI {
 				try {
 					result = Poland.calculate(str);
 					textField.setText(result.getString());
-				} catch (Exception a) {
+				} catch (ArithmeticException q) {
+					textField.setText("Error! Do not divide by zero next time!");
+				} catch (IllegalExpression a) {
+					textField.setText("Wrong format!");
+				} catch (EmptyStackException g) {
+					textField.setText("Error in brackets!");
+				} catch (Exception s) {
 					textField.setText("Error!");
 				}
-
 			}
 		});
 		btnCalculate.setBounds(0, 61, 440, 53);
@@ -76,6 +84,7 @@ public class GUI {
 
 		textField = new JTextField();
 		textField.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 
 			}
