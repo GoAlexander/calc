@@ -1,8 +1,12 @@
 package poland;
 
 import fraction.Fraction;
+
+import java.util.EmptyStackException;
 import java.util.Stack;
 import java.util.logging.Logger;
+
+import exception.*;
 
 public class Poland {
 
@@ -11,7 +15,7 @@ public class Poland {
 
 	// Method Calculate takes expression as string and return result
 	// This method calls another methods of current class
-	static public Fraction calculate(String input) {
+	static public Fraction calculate(String input) throws EmptyStackException, IllegalExpression {
 
 		if (debug)
 			log.info(input);
@@ -35,7 +39,7 @@ public class Poland {
 	}
 
 	// This method transforms string to postfix form
-	static private String getExpression(String input) {
+	static private String getExpression(String input) throws EmptyStackException, IllegalExpression {
 		String output = ""; // String for expression
 		Stack<Character> operStack = new Stack<Character>(); // Stack for
 																// operators
@@ -47,7 +51,7 @@ public class Poland {
 				continue; // Go to the next symbol
 
 			// If symbol is digit -> read all number
-			if (Character.isDigit(input.charAt(i))) // If symbol is digit
+			else if (Character.isDigit(input.charAt(i))) // If symbol is digit
 			{
 				// Read until separator or operator (to get a number)
 				while (!isDelimeter(input.charAt(i)) && !isOperator(input.charAt(i))) {
@@ -63,25 +67,30 @@ public class Poland {
 			}
 
 			// If symbol is operator
-			if (isOperator(input.charAt(i))) // If operator
+			else if (isOperator(input.charAt(i))) // If operator
 			{
 				if (input.charAt(i) == '(') // If symbol is "("
 					operStack.push(input.charAt(i)); // Write to the stack
 				else if (input.charAt(i) == ')') // If symbol is ")"
 				{
 					// Write all operators until "(" to the string
-					Character s = operStack.pop();
+					
+						Character s = operStack.pop();
 
-					while (s != '(') {
-						output += s.toString() + ' ';
-						s = operStack.pop();
-					}
+						while (s != '(') {
+
+							output += s.toString() + ' ';
+							s = operStack.pop();
+						}
+
 				}
 
 				else if (operStack.size() > 0) // If another operator
 				{
 					// if priority of operator is greater -> then add operator
 					// to the peek of stack
+					if (input.charAt(i) == operStack.peek())
+						throw new IllegalExpression();
 					if (getPriority(input.charAt(i)) > getPriority(operStack.peek()))
 						operStack.push(input.charAt(i));
 					else {
@@ -102,7 +111,8 @@ public class Poland {
 				} else
 					// if stack is empty add operator to the peek of stack
 					operStack.push(input.charAt(i));
-			}
+			} else
+				throw new IllegalExpression();
 		}
 
 		// When we processed all symbols -> purge all residual operators to the
@@ -115,7 +125,7 @@ public class Poland {
 
 	// This method calculates value of expression (expression is already in
 	// postfix form)
-	static private Fraction counting(String input) {
+	static private Fraction counting(String input) throws NumberFormatException, IllegalExpression {
 		Fraction result = new Fraction(0);
 		Stack<Fraction> temp = new Stack<Fraction>(); // Stack for answers
 		for (int i = 0; i < input.length(); i++) { // For each symbol in the
@@ -143,7 +153,8 @@ public class Poland {
 				// Take two last values from stack
 				Fraction a = temp.pop();
 				Fraction b = temp.pop();
-				switch (input.charAt(i)) // And calculate them according to the
+				switch (input.charAt(i)) // And calculate them according to
+											// the
 											// current operator
 				{
 				case '+':
@@ -160,8 +171,8 @@ public class Poland {
 					break;
 				/*
 				 * case '^': //result =
-				 * Double.parseDouble(Math.pow(Double.parseDouble(b.toString()),
-				 * Double.parseDouble(a.toString())).toString()); result =
+				 * Double.parseDouble(Math.pow(Double.parseDouble(b.toString
+				 * ()), Double.parseDouble(a.toString())).toString()); result =
 				 * Math.pow(Double.parseDouble(b.toString()),
 				 * Double.parseDouble(a.toString())); result =
 				 * Double.parseDouble(Double.toString(result)); break;

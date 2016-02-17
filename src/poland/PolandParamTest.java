@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-
 @RunWith(Parameterized.class)
 public class PolandParamTest {
 	private String expected;
@@ -21,13 +20,17 @@ public class PolandParamTest {
 
 	@Parameters
 	public static Collection<String[]> addedNumbers() {
-		return Arrays.asList(new String[][] { { "8", "3 + 5" }, { "-1", "1 - 2" },
-				{ "25", "10 + 15" }, { "120", "120 +0" }, });
+		return Arrays.asList(
+				new String[][] { { "8", "3 + 5" }, { "-1", "1 - 2" }, { "25", "10 + 15" }, { "120", "120 +0" }, });
 	}
-	
+
 	@Test
 	public void test() {
-		assertEquals(expected, Poland.calculate(expression).getString());
-		
+		try {
+			assertEquals(expected, Poland.calculate(expression).getString());
+		} catch (Exception e) {
+			fail();
+		}
+
 	}
 }

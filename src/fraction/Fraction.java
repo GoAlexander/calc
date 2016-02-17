@@ -50,23 +50,19 @@ public class Fraction {
 			System.out.println(0);
 		else if (denom == 1)
 			System.out.println(nom);
-		else if (denom == 0)
-			System.out.println("Error! Your denom =0, start new program!");
 		else
 			System.out.println(nom + "/" + denom);
 	}
-	
+
 	public String getString() { // print + checking (+processing_of_exeptions)
 		String result;
 		if (nom == 0 && denom != 0)
 			result = "0";
 		else if (denom == 1)
 			result = Integer.toString(nom);
-		else if (denom == 0)
-			result = "Error! Your denom =0, start new program!";
 		else
 			result = Integer.toString(nom) + "/" + Integer.toString(denom);
-		
+
 		return result;
 	}
 
@@ -105,12 +101,14 @@ public class Fraction {
 		}
 	}
 
-	private void fractionStandartization() {
+	private void fractionStandartization() throws ArithmeticException{
+		if(denom==0)
+			throw new ArithmeticException();
 		sign();
 		reduction();
 	}
 
-	public void addition(Fraction f2) {
+	public void addition(Fraction f2) throws ArithmeticException {
 		addition(this, f2);
 		fractionStandartization();
 	}
@@ -164,18 +162,20 @@ public class Fraction {
 		return f3;
 	}
 
-	public void divide(Fraction f1, Fraction f2) {
+	public void divide(Fraction f1, Fraction f2) throws ArithmeticException {
+		if (f1.denom == 0 || f2.denom == 0)
+			throw new ArithmeticException();
 		nom = f1.nom * f2.denom;
 		denom = f1.denom * f2.nom;
 		fractionStandartization();
 	}
 
-	public void divide(Fraction f) {
+	public void divide(Fraction f) throws ArithmeticException {
 		divide(this, f);
 		fractionStandartization();
 	}
 
-	public static Fraction div(Fraction f1, Fraction f2) {
+	public static Fraction div(Fraction f1, Fraction f2) throws ArithmeticException {
 		Fraction f3 = new Fraction();
 		f3.divide(f1, f2);
 		f3.fractionStandartization();
