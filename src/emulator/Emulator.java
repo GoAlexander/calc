@@ -7,6 +7,7 @@ public class Emulator {
 
 	private Stack<String> stackback = new Stack<String>();
 	private Stack<String> stackforward = new Stack<String>();
+	private Stack<String> history = new Stack<String>();
 
 	public String back() throws EmptyStackException {
 		if (!stackback.empty()) {
@@ -32,9 +33,29 @@ public class Emulator {
 
 	public void newnumber(String str) {
 		stackback.push(str);
-
+		history.push(str);
 		while (stackforward.empty() != true)
 			stackforward.pop();
 
+	}
+
+	public String[] getHistory() {
+		Stack<String> tmphistory = history;
+		String[] tmp = new String[tmphistory.size()];
+		for (int i = 0; i < tmphistory.size(); i++)
+			tmp[i] = tmphistory.pop();
+		return tmp;
+	}
+
+	public int getSize() {
+		return history.size();
+	}
+
+	public String toString() {
+		String s = new String();
+		Stack<String> tmp = stackback;
+		while (tmp.empty() != true)
+			s = s + tmp.pop() + "\n";
+		return s;
 	}
 }
