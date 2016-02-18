@@ -4,12 +4,10 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
-//import java.awt.BorderLayout;
 import javax.swing.JTextField;
 
 import exception.*;
 import fraction.Fraction;
-//import javafx.scene.control.SplitPane.Divider;
 import poland.Poland;
 
 import java.awt.Font;
@@ -19,7 +17,6 @@ import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
-//import javax.swing.SwingConstants;
 
 public class GUI {
 
