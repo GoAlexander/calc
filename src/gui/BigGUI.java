@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+
+import emulator.Emulator;
+
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -24,6 +27,7 @@ public class BigGUI extends GUI {
 	private JFrame frmFractionCalculator;
 	private JTextField textField;
 
+	Emulator myEmulator = new Emulator();
 	String str;
 	Fraction result;
 
@@ -75,10 +79,14 @@ public class BigGUI extends GUI {
 
 		// natural height, maximum width
 		c.fill = GridBagConstraints.HORIZONTAL;
-		
+
 		button = new JButton("Undo");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					textField.setText(myEmulator.back().toString());
+				} catch (EmptyStackException a) {
+				}
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -90,6 +98,14 @@ public class BigGUI extends GUI {
 		panel.add(button);
 
 		button = new JButton("Redo");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					textField.setText(myEmulator.forward().toString());
+				} catch (EmptyStackException a) {
+				}
+			}
+		});
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 1;
 		c.gridx = 1;
@@ -334,6 +350,7 @@ public class BigGUI extends GUI {
 					if (!str.equals("")) {
 						result = Poland.calculate(str);
 						textField.setText(result.getString());
+						myEmulator.newnumber(str);
 					}
 				} catch (ArithmeticException q) {
 					textField.setText("Error! Do not divide by zero next time!");
