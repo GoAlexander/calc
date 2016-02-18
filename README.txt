@@ -5,7 +5,7 @@ The main idea of this project: learn how to use Junit and tests overall.
 Usage of this calculator:
 	Just start it and enter all expressions you want.
 
-This Calculator supports:
+This Calculator supports (for Calc.java):
 	-Operations:
 		+, -, *, %
 	-Brackets
@@ -39,3 +39,19 @@ Feature of this program is that there are two calculation classes(!) each has ow
 
 7) PolandTest.java
 	Tests of all program (with Calc.java "engine")
+
+
+ ===========
+|Milestone 2|
+ ===========
+
+Implementation of GUI.java, BigGUI.java and History.java.
+
+Our calculator has GUI!
+Its "engine" is Poland.java.
+
+GUI.java is minimalistic interface.
+
+BigGUI.java is serious calculator GUI.
+
+In addition, calcs have undo/redo and history features.

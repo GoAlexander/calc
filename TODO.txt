@@ -1,6 +1,4 @@
 Small TODO list:
 
--try{} catch{} сделать вместо trwos exception
--logger -> убрать if(DEBUG) + см. как конфигурируется Logger + файл конфигурации (чтобы не нужно было перекомпилировать)
 -поправить баг с большими числами 11111111 (из-за цикла в FractionStandartization)
 -поправить баг см. ATest.java
