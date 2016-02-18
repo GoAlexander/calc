@@ -16,15 +16,18 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.EmptyStackException;
 import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+import java.awt.GridLayout;
 //import javax.swing.SwingConstants;
 
 public class GUI {
 
 	private JFrame frmFractionCalculator;
-	private JTextField textField;
 
 	String str;
 	Fraction result;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -58,16 +61,47 @@ public class GUI {
 		frmFractionCalculator.setResizable(false);
 		frmFractionCalculator.setBounds(100, 100, 440, 142);
 		frmFractionCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmFractionCalculator.getContentPane().setLayout(null);
-
-		JButton btnCalculate = new JButton("Calculate");
-		btnCalculate.addActionListener(new ActionListener() {
+		frmFractionCalculator.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Dialog", Font.BOLD, 30));
+		frmFractionCalculator.getContentPane().add(textField, BorderLayout.NORTH);
+		textField.setColumns(10);
+		
+		JPanel panel = new JPanel();
+		frmFractionCalculator.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(new GridLayout(2, 2));
+		
+		JButton btnNewButton_3 = new JButton("Undo");
+		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+			}
+		});
+		panel.add(btnNewButton_3);
+		
+		JButton btnNewButton = new JButton("Redo");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panel.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("History");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panel.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("=");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				str = textField.getText();
 				try {
-					result = Poland.calculate(str);
-					textField.setText(result.getString());
+					if(!str.equals("")) {
+						result = Poland.calculate(str);
+						textField.setText(result.getString());
+					}
 				} catch (ArithmeticException q) {
 					textField.setText("Error! Do not divide by zero next time!");
 				} catch (IllegalExpression a) {
@@ -79,19 +113,6 @@ public class GUI {
 				}
 			}
 		});
-		btnCalculate.setBounds(0, 61, 440, 53);
-		frmFractionCalculator.getContentPane().add(btnCalculate);
-
-		textField = new JTextField();
-		textField.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		});
-		textField.setFont(new Font("Dialog", Font.BOLD, 20));
-		textField.setBounds(0, 0, 450, 65);
-		frmFractionCalculator.getContentPane().add(textField);
-		textField.setColumns(10);
+		panel.add(btnNewButton_2);
 	}
 }

@@ -9,29 +9,28 @@ import java.util.logging.Logger;
 import exception.*;
 
 public class Poland {
-
+	
 	private static Logger log = Logger.getLogger(Poland.class.getName());
-	static boolean debug = true;
 
 	// Method Calculate takes expression as string and return result
 	// This method calls another methods of current class
 	static public Fraction calculate(String input) throws EmptyStackException, IllegalExpression {
-
-		if (debug)
-			log.info(input);
+		
+		//enable/disable logs
+		log.setUseParentHandlers(true);
+		
+		log.info(input);
 
 		if (input.startsWith("-"))
 			input = "0" + input;
 		if (input.contains("(-"))
 			input = input.replace("(-", "(0-");
 
-		if (debug)
-			log.info(input);
+		log.info(input);
 
 		String output = getExpression(input); // Transformation of expression to
 												// postfix form
-		if (debug)
-			log.info(output);
+		log.info(output);
 
 		Fraction result = counting(output); // returned expression solving
 
