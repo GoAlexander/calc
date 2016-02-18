@@ -25,6 +25,7 @@ public class GUI {
 	String str;
 	Fraction result;
 	private JTextField textField;
+	private History history = new History();
 
 	/**
 	 * Launch the application.
@@ -86,6 +87,10 @@ public class GUI {
 		JButton btnNewButton_1 = new JButton("History");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				history.setVisible(true);
+				//wait???
+				//textField.setText(history.selected_exp);
+
 			}
 		});
 		panel.add(btnNewButton_1);
