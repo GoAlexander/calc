@@ -75,7 +75,7 @@ public class BigGUI extends GUI {
 
 		// natural height, maximum width
 		c.fill = GridBagConstraints.HORIZONTAL;
-
+		
 		button = new JButton("Undo");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
