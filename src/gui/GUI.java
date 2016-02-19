@@ -6,13 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import emulator.Emulator;
 import exception.*;
+import exprhistory.ExprHistory;
 import fraction.Fraction;
 import poland.Poland;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.EmptyStackException;
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
@@ -23,11 +25,10 @@ public class GUI {
 
 	private JFrame frmFractionCalculator;
 
-	Emulator myEmulator = new Emulator();
+	//ExprHistory myExprHistory = new ExprHistory();
 	String str;
 	Fraction result;
 	private JTextField textField;
-	private History history = new History();
 
 	/**
 	 * Launch the application.
@@ -76,7 +77,7 @@ public class GUI {
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					textField.setText(myEmulator.back().toString());
+					textField.setText( ExprHistory.back().toString());
 				} catch (EmptyStackException a) {
 				}
 			}
@@ -87,7 +88,7 @@ public class GUI {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					textField.setText(myEmulator.forward().toString());
+					textField.setText( ExprHistory.forward().toString());
 				} catch (EmptyStackException a) {
 				}
 			}
@@ -97,10 +98,16 @@ public class GUI {
 		JButton btnNewButton_1 = new JButton("History");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				History history = new History();
 				history.setVisible(true);
-				// wait???
-				// textField.setText(history.selected_exp);
-
+				
+				// wait to cancel the window
+				history.addWindowListener(new WindowAdapter() {
+				    @Override
+				    public void windowClosed(WindowEvent e) {
+				    	textField.setText(history.getSelectedExp());
+				    }
+				});
 			}
 		});
 		panel.add(btnNewButton_1);
@@ -113,7 +120,7 @@ public class GUI {
 					if (!str.equals("")) {
 						result = Poland.calculate(str);
 						textField.setText(result.getString());
-						myEmulator.newnumber(str);
+						 ExprHistory.newnumber(str);
 					}
 				} catch (ArithmeticException q) {
 					textField.setText("Error! Do not divide by zero next time!");

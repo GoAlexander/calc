@@ -5,8 +5,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-import emulator.Emulator;
-
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -14,10 +12,13 @@ import java.awt.GridBagConstraints;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.EmptyStackException;
 import java.awt.event.ActionEvent;
 
 import exception.IllegalExpression;
+import exprhistory.ExprHistory;
 import fraction.Fraction;
 import poland.Poland;
 import java.awt.GridBagLayout;
@@ -27,7 +28,6 @@ public class BigGUI extends GUI {
 	private JFrame frmFractionCalculator;
 	private JTextField textField;
 
-	Emulator myEmulator = new Emulator();
 	String str;
 	Fraction result;
 
@@ -84,7 +84,7 @@ public class BigGUI extends GUI {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					textField.setText(myEmulator.back().toString());
+					textField.setText(ExprHistory.back().toString());
 				} catch (EmptyStackException a) {
 				}
 			}
@@ -101,7 +101,7 @@ public class BigGUI extends GUI {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					textField.setText(myEmulator.forward().toString());
+					textField.setText(ExprHistory.forward().toString());
 				} catch (EmptyStackException a) {
 				}
 			}
@@ -335,6 +335,20 @@ public class BigGUI extends GUI {
 		panel.add(button);
 
 		button = new JButton("History");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				History history = new History();
+				history.setVisible(true);
+				
+				// wait to cancel the window
+				history.addWindowListener(new WindowAdapter() {
+				    @Override
+				    public void windowClosed(WindowEvent e) {
+				    	textField.setText(history.getSelectedExp());
+				    }
+				});
+			}
+		});
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 1;
 		c.gridx = 3;
@@ -350,7 +364,7 @@ public class BigGUI extends GUI {
 					if (!str.equals("")) {
 						result = Poland.calculate(str);
 						textField.setText(result.getString());
-						myEmulator.newnumber(str);
+						ExprHistory.newnumber(str);
 					}
 				} catch (ArithmeticException q) {
 					textField.setText("Error! Do not divide by zero next time!");

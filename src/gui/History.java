@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import exprhistory.ExprHistory;
+
 import java.awt.GridBagLayout;
 import javax.swing.JScrollPane;
 import java.awt.GridBagConstraints;
@@ -14,14 +17,16 @@ import java.awt.CardLayout;
 import java.awt.Container;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class History extends JFrame {
+
+public class History extends JDialog {
 	
-	public String selected_exp;
+	private String selected_exp;
 
 	/**
 	 * Launch the application.
@@ -49,31 +54,8 @@ public class History extends JFrame {
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		
-		
-		
-		//for test
-		 String[] test = { "Chrome", "Firefox", "Internet Explorer", "Safari",
-                 "Opera", "Morrowind", "Oblivion", "NFS", "Half Life 2",
-                 "Hitman", "Morrowind", "Oblivion", "NFS", "Half Life 2",
-                 "Hitman", "Morrowind", "Oblivion", "NFS", "Half Life 2",
-                 "Hitman", "Morrowind", "Oblivion", "NFS", "Half Life 2",
-                 "Hitman", "Morrowind", "Oblivion", "NFS", "Half Life 2",
-                 "Hitman", "IL-2", "CMR", "NFS Undercover",
-                 "Star Wars", "Call of Duty", "IL-2", "CMR",
-                 "NFS Undercover", "Star Wars", "Call of Duty",
-                 "IL-2", "CMR", "NFS Undercover", "Star Wars",
-                 "Call of Duty", "IL-2", "CMR", "NFS Undercover",
-                 "Star Wars", "Call of Duty", "IL-2", "CMR",
-                 "NFS Undercover", "Star Wars", "Call of Duty",
-                 "IL-2", "CMR", "NFS Undercover", "Star Wars",
-                 "Call of Duty", "Arena", "Dagerfall", "MS Office",
-                 "Open Office", "Windows", "Arena", "Dagerfall",
-                 "MS Office", "Open Office", "Windows", "Arena",
-                 "Dagerfall", "MS Office", "Open Office", "Windows",
-                 "Arena", "Dagerfall", "MS Office", "Open Office",
-                 "Windows", "Mac OS", "Ubuntu"
-		 };
-		JList list = new JList(test);
+		JList list = new JList(ExprHistory.getHistory());
+		//JList list = new JList(ExprHistory.getHistory());
 		getContentPane().add(list, BorderLayout.CENTER);
 		list.setLayoutOrientation(JList.VERTICAL);
 		
@@ -86,11 +68,16 @@ public class History extends JFrame {
 	    JButton btnNewButton = new JButton("Enter");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				selected_exp = list.getSelectedValue().toString(); //not so good idea (redo?)
-				dispose(); //setVisibility(false)
+				selected_exp = list.getSelectedValue().toString();
+				
+				dispose(); //cancel the window
 			}
 		});
 		getContentPane().add(btnNewButton, BorderLayout.SOUTH);
 
+	}
+	
+	public String getSelectedExp() {	
+		return selected_exp;
 	}
 }
