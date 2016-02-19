@@ -60,7 +60,8 @@ public class BigGUI extends GUI {
 	private void initialize() {
 		frmFractionCalculator = new JFrame();
 		frmFractionCalculator.setTitle("Fraction Calculator");
-		frmFractionCalculator.setBounds(100, 100, 450, 360);
+		frmFractionCalculator.setBounds(100, 100, 450, 350);
+		frmFractionCalculator.setResizable(false);
 		frmFractionCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		textField = new JTextField();
