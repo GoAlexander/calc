@@ -3,7 +3,8 @@ package gui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JTextField;
+
+import exception.ErrorInBrackets;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -11,13 +12,14 @@ import java.awt.GridBagConstraints;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.EmptyStackException;
 import java.awt.event.ActionEvent;
 
-import exception.IllegalExpression;
 import exprhistory.ExprHistory;
 import fraction.Fraction;
 import poland.Poland;
@@ -26,7 +28,6 @@ import java.awt.GridBagLayout;
 public class BigGUI extends GUI {
 
 	private JFrame frmFractionCalculator;
-	private JTextField textField;
 
 	String str;
 	Fraction result;
@@ -60,12 +61,12 @@ public class BigGUI extends GUI {
 	private void initialize() {
 		frmFractionCalculator = new JFrame();
 		frmFractionCalculator.setTitle("Fraction Calculator");
-		frmFractionCalculator.setBounds(100, 100, 450, 350);
+		frmFractionCalculator.setBounds(100, 100, 450, 360);
 		frmFractionCalculator.setResizable(false);
 		frmFractionCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		textField = new JTextField();
-		textField.setFont(new Font("Dialog", Font.BOLD, 30));
+		JTextArea textField = new JTextArea(2, 10);
+		textField.setFont(new Font("Dialog", Font.BOLD, 20));
 		frmFractionCalculator.getContentPane().add(textField, BorderLayout.NORTH);
 		textField.setColumns(10);
 
@@ -340,13 +341,13 @@ public class BigGUI extends GUI {
 			public void actionPerformed(ActionEvent e) {
 				History history = new History();
 				history.setVisible(true);
-				
+
 				// wait to cancel the window
 				history.addWindowListener(new WindowAdapter() {
-				    @Override
-				    public void windowClosed(WindowEvent e) {
-				    	textField.setText(history.getSelectedExp());
-				    }
+					@Override
+					public void windowClosed(WindowEvent e) {
+						textField.setText(history.getSelectedExp());
+					}
 				});
 			}
 		});
@@ -361,21 +362,22 @@ public class BigGUI extends GUI {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				str = textField.getText();
+				ExprHistory.newnumber(str);
 				try {
 					if (!str.equals("")) {
 						result = Poland.calculate(str);
 						textField.setText(result.getString());
-						ExprHistory.newnumber(str);
 					}
 				} catch (ArithmeticException q) {
-					textField.setText("Error! Do not divide by zero next time!");
-				} catch (IllegalExpression a) {
-					textField.setText("Wrong format!");
+					textField.setText(textField.getText() + "\nDo not divide by zero!");
+				} catch (ErrorInBrackets g) {
+					textField.setText(textField.getText() + "\nError in brackets!");
 				} catch (EmptyStackException g) {
-					textField.setText("Error in brackets!");
+					textField.setText(textField.getText() + "\nWrong format!");
 				} catch (Exception s) {
-					textField.setText("Error!");
+					textField.setText(textField.getText() + "\nError!");
 				}
+
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;

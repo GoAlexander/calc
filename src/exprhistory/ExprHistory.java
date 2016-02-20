@@ -35,30 +35,15 @@ public class ExprHistory {
 		stackback.push(str);
 		history.push(str);
 
-		
 		while (stackforward.empty() != true)
 			stackforward.pop();
 	}
 
 	static public String[] getHistory() {
-		Stack<String> tmphistory = history;
-		String[] tmp = new String[tmphistory.size()];
-		
-		for (int i = 0; !tmphistory.empty(); i++) {
-			tmp[i] = tmphistory.pop();
+		String[] tmp = new String[history.size()];
+		for (int i = 0; i < history.size(); i++) {
+			tmp[i] = history.elementAt(i);
 		}
 		return tmp;
-	}
-
-	public int getSize() {
-		return history.size();
-	}
-
-	public String toString() {
-		String s = new String();
-		Stack<String> tmp = stackback;
-		while (tmp.empty() != true)
-			s = s + tmp.pop() + "\n";
-		return s;
 	}
 }

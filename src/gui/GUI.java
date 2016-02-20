@@ -4,9 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
-import javax.swing.JTextField;
+//import javax.swing.JTextField;
 
-import exception.*;
+import exception.ErrorInBrackets;
 import exprhistory.ExprHistory;
 import fraction.Fraction;
 import poland.Poland;
@@ -19,16 +19,18 @@ import java.util.EmptyStackException;
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
 import java.awt.GridLayout;
 
 public class GUI {
 
 	private JFrame frmFractionCalculator;
 
-	//ExprHistory myExprHistory = new ExprHistory();
+	// ExprHistory myExprHistory = new ExprHistory();
 	String str;
 	Fraction result;
-	private JTextField textField;
+	// private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -60,14 +62,13 @@ public class GUI {
 		frmFractionCalculator = new JFrame();
 		frmFractionCalculator.setTitle("Fraction Calculator");
 		frmFractionCalculator.setResizable(false);
-		frmFractionCalculator.setBounds(100, 100, 440, 142);
+		frmFractionCalculator.setBounds(100, 100, 440, 140);
 		frmFractionCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmFractionCalculator.getContentPane().setLayout(new BorderLayout(0, 0));
 
-		textField = new JTextField();
-		textField.setFont(new Font("Dialog", Font.BOLD, 30));
+		JTextArea textField = new JTextArea(2, 10);
+		textField.setFont(new Font("Dialog", Font.BOLD, 20));
 		frmFractionCalculator.getContentPane().add(textField, BorderLayout.NORTH);
-		textField.setColumns(10);
 
 		JPanel panel = new JPanel();
 		frmFractionCalculator.getContentPane().add(panel, BorderLayout.CENTER);
@@ -77,7 +78,7 @@ public class GUI {
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					textField.setText( ExprHistory.back().toString());
+					textField.setText(ExprHistory.back().toString());
 				} catch (EmptyStackException a) {
 				}
 			}
@@ -88,7 +89,7 @@ public class GUI {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					textField.setText( ExprHistory.forward().toString());
+					textField.setText(ExprHistory.forward().toString());
 				} catch (EmptyStackException a) {
 				}
 			}
@@ -98,15 +99,17 @@ public class GUI {
 		JButton btnNewButton_1 = new JButton("History");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				History history = new History();
 				history.setVisible(true);
-				
+
 				// wait to cancel the window
 				history.addWindowListener(new WindowAdapter() {
-				    @Override
-				    public void windowClosed(WindowEvent e) {
-				    	textField.setText(history.getSelectedExp());
-				    }
+					@Override
+					public void windowClosed(WindowEvent e) {
+						if (history.getSelectedExp() != null)
+							textField.setText(history.getSelectedExp());
+					}
 				});
 			}
 		});
@@ -116,20 +119,20 @@ public class GUI {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				str = textField.getText();
+				ExprHistory.newnumber(str);
 				try {
 					if (!str.equals("")) {
 						result = Poland.calculate(str);
 						textField.setText(result.getString());
-						 ExprHistory.newnumber(str);
 					}
 				} catch (ArithmeticException q) {
-					textField.setText("Error! Do not divide by zero next time!");
-				} catch (IllegalExpression a) {
-					textField.setText("Wrong format!");
+					textField.setText(textField.getText() + "\nDo not divide by zero!");
+				} catch (ErrorInBrackets g) {
+					textField.setText(textField.getText() + "\nError in brackets!");
 				} catch (EmptyStackException g) {
-					textField.setText("Error in brackets!");
+					textField.setText(textField.getText() + "\nWrong format!");
 				} catch (Exception s) {
-					textField.setText("Error!");
+					textField.setText(textField.getText() + "\nError!");
 				}
 			}
 		});
