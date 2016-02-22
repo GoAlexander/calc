@@ -1,5 +1,16 @@
 package gui;
 
+
+
+/*	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	Поправить textArea
+	Взаимодействие с диалоговым окошком (передача ему переменной)
+	от другого окошка. Убрать глобальный (статичный)объект History.
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+*/
+
+
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -61,7 +72,7 @@ public class BigGUI extends GUI {
 	private void initialize() {
 		frmFractionCalculator = new JFrame();
 		frmFractionCalculator.setTitle("Fraction Calculator");
-		frmFractionCalculator.setBounds(100, 100, 450, 318);
+		frmFractionCalculator.setBounds(100, 100, 450, 350);
 		frmFractionCalculator.setResizable(false);
 		frmFractionCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -346,7 +357,8 @@ public class BigGUI extends GUI {
 				history.addWindowListener(new WindowAdapter() {
 					@Override
 					public void windowClosed(WindowEvent e) {
-						textField.setText(history.getSelectedExp());
+						if (history.getSelectedExp() != null)
+							textField.setText(history.getSelectedExp());
 					}
 				});
 			}
