@@ -9,7 +9,7 @@ public class ExprHistory {
 	static private Stack<String> stackforward = new Stack<String>();
 	static private Stack<String> history = new Stack<String>();
 
-	static public String back() throws EmptyStackException {
+	public String back() throws EmptyStackException {
 		if (!stackback.empty()) {
 			stackforward.push(stackback.peek());
 		}
@@ -20,7 +20,7 @@ public class ExprHistory {
 			throw new EmptyStackException();
 	}
 
-	static public String forward() throws EmptyStackException {
+	public String forward() throws EmptyStackException {
 		if (!stackforward.empty()) {
 			stackback.push(stackforward.peek());
 		}
@@ -31,7 +31,7 @@ public class ExprHistory {
 			throw new EmptyStackException();
 	}
 
-	static public void newnumber(String str) {
+	public void newnumber(String str) {
 		stackback.push(str);
 		history.push(str);
 
@@ -39,7 +39,7 @@ public class ExprHistory {
 			stackforward.pop();
 	}
 
-	static public String[] getHistory() {
+	public String[] getHistory() {
 		String[] tmp = new String[history.size()];
 		for (int i = 0; i < history.size(); i++) {
 			tmp[i] = history.elementAt(i);

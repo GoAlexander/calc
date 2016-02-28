@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 public class History extends JDialog {
 
 	private String selected_exp;
+	private ExprHistory MyExprHistory = new ExprHistory();
 
 	/**
 	 * Launch the application.
@@ -46,7 +47,7 @@ public class History extends JDialog {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 
-		JList<String> list = new JList<String>(ExprHistory.getHistory());
+		JList<String> list = new JList<String>(MyExprHistory.getHistory());
 		getContentPane().add(list, BorderLayout.CENTER);
 		list.setLayoutOrientation(JList.VERTICAL);
 

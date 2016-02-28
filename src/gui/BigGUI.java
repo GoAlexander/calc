@@ -1,16 +1,5 @@
 package gui;
 
-
-
-/*	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	��������� textArea
-	�������������� � ���������� ������� (�������� ��� ����������)
-	�� ������� ������. ������ ���������� (���������)������ History.
-	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-*/
-
-
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -41,6 +30,7 @@ import java.awt.GridBagLayout;
 public class BigGUI extends GUI {
 
 	private JFrame frmFractionCalculator;
+	private ExprHistory MyExprHistory = new ExprHistory();
 
 	String str;
 	Fraction result;
@@ -98,7 +88,7 @@ public class BigGUI extends GUI {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					textField.setText(ExprHistory.back().toString());
+					textField.setText(MyExprHistory.back().toString());
 				} catch (EmptyStackException a) {
 				}
 			}
@@ -115,7 +105,7 @@ public class BigGUI extends GUI {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					textField.setText(ExprHistory.forward().toString());
+					textField.setText(MyExprHistory.forward().toString());
 				} catch (EmptyStackException a) {
 				}
 			}
@@ -351,15 +341,15 @@ public class BigGUI extends GUI {
 		button = new JButton("History");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				History history = new History();
-				history.setVisible(true);
+				History MyHistory = new History();
+				MyHistory.setVisible(true);
 
 				// wait to cancel the window
-				history.addWindowListener(new WindowAdapter() {
+				MyHistory.addWindowListener(new WindowAdapter() {
 					@Override
 					public void windowClosed(WindowEvent e) {
-						if (history.getSelectedExp() != null)
-							textField.setText(history.getSelectedExp());
+						if (MyHistory.getSelectedExp() != null)
+							textField.setText(MyHistory.getSelectedExp());
 					}
 				});
 			}
@@ -375,7 +365,7 @@ public class BigGUI extends GUI {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				str = textField.getText();
-				ExprHistory.newnumber(str);
+				MyExprHistory.newnumber(str);
 				try {
 					if (!str.equals("")) {
 						result = Poland.calculate(str);

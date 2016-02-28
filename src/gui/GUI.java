@@ -29,7 +29,7 @@ public class GUI {
 
 	private JFrame frmFractionCalculator;
 
-	// ExprHistory myExprHistory = new ExprHistory();
+	private ExprHistory MyExprHistory = new ExprHistory();
 	String str;
 	Fraction result;
 	// private JTextField textField;
@@ -80,7 +80,7 @@ public class GUI {
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					textField.setText(ExprHistory.back().toString());
+					textField.setText(MyExprHistory.back().toString());
 				} catch (EmptyStackException a) {
 				}
 			}
@@ -91,7 +91,7 @@ public class GUI {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					textField.setText(ExprHistory.forward().toString());
+					textField.setText(MyExprHistory.forward().toString());
 				} catch (EmptyStackException a) {
 				}
 			}
@@ -102,15 +102,15 @@ public class GUI {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				History history = new History();
-				history.setVisible(true);
+				History MyHistory = new History();
+				MyHistory.setVisible(true);
 
 				// wait to cancel the window
-				history.addWindowListener(new WindowAdapter() {
+				MyHistory.addWindowListener(new WindowAdapter() {
 					@Override
 					public void windowClosed(WindowEvent e) {
-						if (history.getSelectedExp() != null)
-							textField.setText(history.getSelectedExp());
+						if (MyHistory.getSelectedExp() != null)
+							textField.setText(MyHistory.getSelectedExp());
 					}
 				});
 			}
@@ -121,7 +121,7 @@ public class GUI {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				str = textField.getText();
-				ExprHistory.newnumber(str);
+				MyExprHistory.newnumber(str);
 				try {
 					if (!str.equals("")) {
 						result = Poland.calculate(str);
