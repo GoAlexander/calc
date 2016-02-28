@@ -3,9 +3,9 @@ package gui;
 
 
 /*	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	Поправить textArea
-	Взаимодействие с диалоговым окошком (передача ему переменной)
-	от другого окошка. Убрать глобальный (статичный)объект History.
+	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ textArea
+	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
+	пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)пїЅпїЅпїЅпїЅпїЅпїЅ History.
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 */
 
@@ -14,6 +14,7 @@ package gui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import exception.ErrorInBrackets;
 
@@ -24,6 +25,7 @@ import java.awt.GridBagConstraints;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -76,10 +78,9 @@ public class BigGUI extends GUI {
 		frmFractionCalculator.setResizable(false);
 		frmFractionCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		JTextArea textField = new JTextArea(2, 10);
-		textField.setFont(new Font("Dialog", Font.BOLD, 20));
+		JTextField textField = new JTextField();
+		textField.setFont(new Font("Dialog", Font.BOLD, 30));
 		frmFractionCalculator.getContentPane().add(textField, BorderLayout.NORTH);
-		textField.setColumns(10);
 
 		JPanel panel = new JPanel();
 		frmFractionCalculator.getContentPane().add(panel, BorderLayout.CENTER);
@@ -381,13 +382,13 @@ public class BigGUI extends GUI {
 						textField.setText(result.getString());
 					}
 				} catch (ArithmeticException q) {
-					textField.setText(textField.getText() + "\nDo not divide by zero!");
+					JOptionPane.showMessageDialog(null, "Do not divide by zero!");
 				} catch (ErrorInBrackets g) {
-					textField.setText(textField.getText() + "\nError in brackets!");
+					JOptionPane.showMessageDialog(null, "Error in brackets!");
 				} catch (EmptyStackException g) {
-					textField.setText(textField.getText() + "\nWrong format!");
+					JOptionPane.showMessageDialog(null, "Wrong format!");
 				} catch (Exception s) {
-					textField.setText(textField.getText() + "\nError!");
+					JOptionPane.showMessageDialog(null, "Error!");
 				}
 
 			}

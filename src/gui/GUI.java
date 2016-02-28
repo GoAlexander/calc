@@ -3,6 +3,7 @@ package gui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 //import javax.swing.JTextField;
 
@@ -20,6 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import java.awt.GridLayout;
 
@@ -66,8 +68,8 @@ public class GUI {
 		frmFractionCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmFractionCalculator.getContentPane().setLayout(new BorderLayout(0, 0));
 
-		JTextArea textField = new JTextArea(2, 10);
-		textField.setFont(new Font("Dialog", Font.BOLD, 20));
+		JTextField textField = new JTextField();
+		textField.setFont(new Font("Dialog", Font.BOLD, 30));
 		frmFractionCalculator.getContentPane().add(textField, BorderLayout.NORTH);
 
 		JPanel panel = new JPanel();
@@ -126,13 +128,13 @@ public class GUI {
 						textField.setText(result.getString());
 					}
 				} catch (ArithmeticException q) {
-					textField.setText(textField.getText() + "\nDo not divide by zero!");
+					JOptionPane.showMessageDialog(null, "Do not divide by zero!");
 				} catch (ErrorInBrackets g) {
-					textField.setText(textField.getText() + "\nError in brackets!");
+					JOptionPane.showMessageDialog(null, "Error in brackets!");
 				} catch (EmptyStackException g) {
-					textField.setText(textField.getText() + "\nWrong format!");
+					JOptionPane.showMessageDialog(null, "Wrong format!");
 				} catch (Exception s) {
-					textField.setText(textField.getText() + "\nError!");
+					JOptionPane.showMessageDialog(null, "Error!");
 				}
 			}
 		});
