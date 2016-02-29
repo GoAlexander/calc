@@ -73,6 +73,16 @@ public class Fraction {
 		else
 			return Integer.toString(nom) + "/" + Integer.toString(denom);
 	}
+	
+	//Euclid algorithm (From book of Robert Sedgewick and Kevin Wayne.) 
+	public static int gcd(int p, int q) {
+        while (q != 0) {
+            int temp = q;
+            q = p % q;
+            p = temp;
+        }
+        return p;
+    }
 
 	private void reduction() { // сокращение дроби (Но!
 								// если число на вход
@@ -82,12 +92,11 @@ public class Fraction {
 			tmp = -1;
 			nom *= -1;
 		}
-		for (int i = nom; i > 1; i--) {
-			if (nom % i == 0 && denom % i == 0) {
-				nom /= i;
-				denom /= i;
-			}
-		}
+		
+		int gcd_value = gcd(nom, denom);
+		nom/= gcd_value;
+		denom/=gcd_value;
+		
 		nom *= tmp; // проверить (я решил сделать без
 					// проверки!!!)
 	}

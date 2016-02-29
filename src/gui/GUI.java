@@ -32,7 +32,6 @@ public class GUI {
 	private ExprHistory MyExprHistory = new ExprHistory();
 	String str;
 	Fraction result;
-	// private JTextField textField;
 
 	/**
 	 * Launch the application.
