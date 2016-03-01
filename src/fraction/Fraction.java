@@ -84,9 +84,7 @@ public class Fraction {
         return p;
     }
 
-	private void reduction() { // сокращение дроби (Но!
-								// если число на вход
-		// отрицательное, то знак "вынуть")
+	private void reduction() { 
 		int tmp = 1;
 		if (nom < 0) {
 			tmp = -1;
@@ -97,13 +95,10 @@ public class Fraction {
 		nom/= gcd_value;
 		denom/=gcd_value;
 		
-		nom *= tmp; // проверить (я решил сделать без
-					// проверки!!!)
+		nom *= tmp; 
 	}
 
-	private void sign() { // проверка на знак + выводим
-							// знак только (при вводе
-		// интегрировать проверку!!!)
+	private void sign() { 
 		if (nom < 0 && denom < 0 || nom > 0 && denom < 0) {
 			nom *= -1;
 			denom *= -1;

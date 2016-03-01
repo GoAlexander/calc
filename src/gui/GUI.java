@@ -20,7 +20,7 @@ import java.util.EmptyStackException;
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
+//import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import java.awt.GridLayout;

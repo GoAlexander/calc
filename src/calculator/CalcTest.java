@@ -408,30 +408,7 @@ public class CalcTest {
 		}
 	}
 
-	@Ignore
-	@Test
-	public void test26() {
-		Fraction f1 = new Fraction("222222222222");
-		try {
-			Fraction f2 = Calc.calculate("111111111111 * 2");
-			assertTrue(f1.equals(f2));
-		} catch (Exception e) {
-			fail();
-		}
-	}
-
-	@Ignore
-	@Test
-	public void test27() {
-		Fraction f1 = new Fraction("111111111112");
-		try {
-			Fraction f2 = Calc.calculate("111111111111 + 1");
-			assertTrue(f1.equals(f2));
-		} catch (Exception e) {
-			fail();
-		}
-	}
-
+	
 	@Test
 	public void test28() {
 		Fraction f1 = new Fraction("10000");
@@ -443,8 +420,7 @@ public class CalcTest {
 		}
 	}
 
-	@Ignore
-	
+
 	@Test(timeout = 2) // number in milliseconds
 	// TODO BUG to long
 	public void test29() {
@@ -458,8 +434,7 @@ public class CalcTest {
 	}
 
 	@Ignore
-
-	@Test(timeout = 10) // TODO too long + BUG
+	@Test
 	public void test30_1() {
 		Fraction f1 = new Fraction(1192801855, 13332);
 		try {
@@ -481,7 +456,7 @@ public class CalcTest {
 		}
 	}
 
-	@Ignore
+
 	@Test(timeout = 10000)
 	public void test31() {
 		Fraction f1 = new Fraction(308160493, 469350862);
