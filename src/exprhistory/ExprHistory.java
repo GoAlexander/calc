@@ -44,6 +44,7 @@ public class ExprHistory {
 		for (int i = 0; i < history.size(); i++) {
 			tmp[i] = history.elementAt(i);
 		}
+		
 		return tmp;
 	}
 }

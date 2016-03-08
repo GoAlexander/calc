@@ -76,10 +76,11 @@ public class Fraction {
 	
 	//Euclid algorithm (From book of Robert Sedgewick and Kevin Wayne.) 
 	public static int gcd(int p, int q) {
+		int tmp;
         while (q != 0) {
-            int temp = q;
+            tmp = q;
             q = p % q;
-            p = temp;
+            p = tmp;
         }
         return p;
     }

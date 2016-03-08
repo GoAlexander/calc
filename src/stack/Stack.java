@@ -58,6 +58,7 @@ public class Stack {
 			return false;
 	}
 
+	@Override
 	public String toString() {
 		String s = new String();
 		for (int i = 0; i < data.length; i++)
