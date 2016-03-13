@@ -22,18 +22,18 @@ import java.awt.event.WindowEvent;
 import java.util.EmptyStackException;
 import java.awt.event.ActionEvent;
 
-import exprhistory.ExprHistory;
-import fraction.Fraction;
+//import exprhistory.ExprHistory;
+//import fraction.Fraction;
 import poland.Poland;
 import java.awt.GridBagLayout;
 
-public class BigGUI extends GUI {
+class BigGUI extends GUI {
 
-	private JFrame frmFractionCalculator;
-	private ExprHistory MyExprHistory = new ExprHistory();
+	//private JFrame frmFractionCalculator;
+	//private ExprHistory MyExprHistory = new ExprHistory();
 
-	String str;
-	Fraction result;
+	//private String str;
+	//private Fraction result;
 
 	/**
 	 * Launch the application.
@@ -54,7 +54,7 @@ public class BigGUI extends GUI {
 	/**
 	 * Create the application.
 	 */
-	public BigGUI() {
+	private BigGUI() {
 		initialize();
 	}
 

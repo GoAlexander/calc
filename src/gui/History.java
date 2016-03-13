@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class History extends JDialog {
+class History extends JDialog {
 
 	private String selected_exp;
 	private ExprHistory MyExprHistory = new ExprHistory();
