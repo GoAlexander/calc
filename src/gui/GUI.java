@@ -101,7 +101,7 @@ public class GUI {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				History MyHistory = new History();
+				History MyHistory = new History(MyExprHistory);
 				MyHistory.setVisible(true);
 
 				// wait to cancel the window

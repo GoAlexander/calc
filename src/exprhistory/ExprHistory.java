@@ -5,9 +5,9 @@ import java.util.Stack;
 
 public class ExprHistory {
 
-	static private Stack<String> stackback = new Stack<String>();
-	static private Stack<String> stackforward = new Stack<String>();
-	static private Stack<String> history = new Stack<String>();
+	private Stack<String> stackback = new Stack<String>();
+	private Stack<String> stackforward = new Stack<String>();
+	private Stack<String> history = new Stack<String>();
 
 	public String back() throws EmptyStackException {
 		if (!stackback.empty()) {

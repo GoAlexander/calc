@@ -20,28 +20,13 @@ import java.awt.event.ActionEvent;
 public class History extends JDialog {
 
 	private String selected_exp;
-	private ExprHistory MyExprHistory = new ExprHistory();
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					History frame = new History();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	//private ExprHistory MyExprHistory = new ExprHistory();
 
 	/**
 	 * Create the frame.
+	 * @param myExprHistory2 
 	 */
-	public History() {
+	public History(ExprHistory MyExprHistory) {
 		setTitle("History");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

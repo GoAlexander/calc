@@ -341,7 +341,7 @@ public class BigGUI extends GUI {
 		button = new JButton("History");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				History MyHistory = new History();
+				History MyHistory = new History(MyExprHistory);
 				MyHistory.setVisible(true);
 
 				// wait to cancel the window
