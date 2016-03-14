@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import exception.ErrorInBrackets;
+import exprhistory.ExprHistory;
+import fraction.Fraction;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -27,13 +29,13 @@ import java.awt.event.ActionEvent;
 import poland.Poland;
 import java.awt.GridBagLayout;
 
-class BigGUI extends GUI {
+class BigGUI {
 
-	//private JFrame frmFractionCalculator;
-	//private ExprHistory MyExprHistory = new ExprHistory();
+	private JFrame frmFractionCalculator;
+	private ExprHistory MyExprHistory = new ExprHistory();
 
-	//private String str;
-	//private Fraction result;
+	private String str;
+	private Fraction result;
 
 	/**
 	 * Launch the application.
