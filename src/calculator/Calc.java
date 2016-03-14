@@ -4,7 +4,7 @@ import fraction.Fraction;
 
 class Calc {
 
-	static boolean debug = true; // for DEBUG
+	private static boolean debug = true; // for DEBUG
 
 	// Expression calculation
 	public static Fraction calculate(String s) {

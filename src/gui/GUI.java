@@ -25,11 +25,11 @@ import javax.swing.JTextField;
 
 import java.awt.GridLayout;
 
-public class GUI {
+class GUI {
 
-	private JFrame frmFractionCalculator;
+	JFrame frmFractionCalculator;
 
-	private ExprHistory MyExprHistory = new ExprHistory();
+	ExprHistory MyExprHistory = new ExprHistory();
 	String str;
 	Fraction result;
 

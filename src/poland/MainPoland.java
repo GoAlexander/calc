@@ -3,7 +3,7 @@ package poland;
 import fraction.Fraction;
 import java.util.Scanner;
 
-public class MainPoland {
+class MainPoland {
 
 	public static void main(String[] args) {
 		String str;

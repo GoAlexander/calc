@@ -2,19 +2,19 @@ package stack;
 
 public class Stack {
 
-	int[] data;
+	private int[] data;
 
-	Stack(int capacity) {
+	public Stack(int capacity) {
 		data = new int[capacity];
 	}
 
-	Stack() {
+	public Stack() {
 		this(1);
 	}
 
-	int tail = 0;
+	private int tail = 0;
 
-	void push(int value) {
+	public void push(int value) {
 		if (data.length <= tail + 1) {
 			int[] stacktemp = new int[(tail + 1) * 2];
 			for (int i = 0; i < tail; i++)
@@ -31,7 +31,7 @@ public class Stack {
 	}
 
 
-	void pop() throws Exception {
+	public void pop() throws Exception {
 		if (tail != 0) {
 			tail = tail - 1;
 			int[] stacktemp = new int[tail];
@@ -44,14 +44,14 @@ public class Stack {
 			throw new Exception(); // Stack is empty
 	}
 
-	int peek() throws Exception {
+	public int peek() throws Exception {
 		if (tail != 0)
 			return data[tail - 1];
 		else
 			throw new Exception();
 	}
 
-	boolean isEmpty() {
+	public boolean isEmpty() {
 		if (tail == 0)
 			return true;
 		else
