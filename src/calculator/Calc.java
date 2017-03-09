@@ -16,7 +16,7 @@ class Calc {
 		if (debug)
 			System.out.println("DEBUG: " + str);
 		
-		// Calculate expressions in brackets
+		// Calculate expressions in brackets by obtaining the required substring from the expression, and then calling the calc method and converting the result to a string type
 		while (str.contains("(")) {
 			String tmp = str.substring(str.lastIndexOf("(") + 1, str.indexOf(")", str.lastIndexOf("(") + 1));
 			str = str.replace(str.substring(str.lastIndexOf("("), str.indexOf(")", str.lastIndexOf("(") + 1) + 1),
@@ -26,7 +26,7 @@ class Calc {
 		if (debug)
 			System.out.println("DEBUG: " + str);
 		
-		// Calculate prioritized expressions
+		// Calculate prioritized expressions (addition, subtraction, multiplication or division of the expressions)
 		if ((str.contains("*")) || (str.contains("%"))) {
 			String tmp;
 			int first = 0;
@@ -54,7 +54,7 @@ class Calc {
 		if (debug)
 			System.out.println("DEBUG: " + str);
 		
-		// Calculate a final expression
+		// Calculate a final expression by returning the value obtained from the calc function
 		return calc(str);
 	}
 
@@ -82,7 +82,7 @@ class Calc {
 		return str;
 	}
 
-	// Calculate simple expression
+	// Calculate simple expression that is inputted by user. The operations performed are addition, subtraction, multiplication and division.
 	private static Fraction calc(String str) {
 		String expression_str_line[] = str.split(" ");
 		Fraction[] frac_number = new Fraction[expression_str_line.length];

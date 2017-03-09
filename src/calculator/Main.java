@@ -7,7 +7,7 @@ class Main {
 
 	public static void main(String[] args) {
 
-		// Console interface:
+		// Console interface is launched using the main class.
 		Fraction result;
 
 		@SuppressWarnings("resource")
@@ -30,7 +30,7 @@ class Main {
 				try {
 					result = Calc.calculate(str);
 					System.out.print("=");
-					result.print();
+					result.print(); //prints the result of the expression after the console interface has calculated the expression accordingly
 				} catch (Exception e) {
 					System.out.println("Error");
 				}
